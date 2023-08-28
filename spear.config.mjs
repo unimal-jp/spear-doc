@@ -2,12 +2,11 @@ import fs from 'node:fs/promises'
 import fm from 'front-matter'
 import { remark } from 'remark';
 import html from 'remark-html';
-import escapeHtml from 'escape-html';
+import { parse } from "node-html-parser"
 
 export default {
-  "projectName": "test",
+  "projectName": "Spear document",
   "generateSitemap": false,
-  "generateComponents": true,
   "plugins": [
     (() => {
 
@@ -55,6 +54,16 @@ export default {
           }
         }
       }
+      const generateLisit = (contents) => {
+        return {
+          totalContentsCount: contents.length,
+          matchingContentsCount: contents.length,
+          limit: contents.length,
+          offset: 0,
+          next: null,
+          data: contents
+        }
+      }
       return {
         "pluginName": "markdown-client",
         "configuration": null,
@@ -66,8 +75,29 @@ export default {
                   console.log("Unimplemented");
                 },
               },
-              getList: (contentTypeId, params) => {
+              getList: async (contentTypeId, params) => {
                 console.log("Unimplemented");
+                const dirs = await fs.readdir(`./data/${contentTypeId}`);
+                const contents = [];
+                for (const dir of dirs) {
+                  const fileStat = await fs.stat(`./data/${contentTypeId}/${dir}`);
+                  const file = await fs.readFile(`./data/${contentTypeId}/${dir}`);
+                  const {attributes, body} = fm(file.toString());
+                  const bodyHTML = await remark().use(html).process(body);
+                  const fields = [];
+                  for (const key of Object.keys(attributes)) {
+                    fields.push({
+                      key,
+                      value: attributes[key]
+                    });
+                  }
+                  fields.push({
+                    key: "body",
+                    value: bodyHTML.toString().replaceAll(/\n/g, '')
+                  });
+                  contents.push(generateContent(fields, dir, fileStat.birthtime, fileStat.mtime));
+                }
+                return generateLisit(contents);
               },
               // Generate content from markdown files
               getContent: async (contentTypeId, contentId, params) => {
@@ -84,7 +114,7 @@ export default {
                 }
                 fields.push({
                   key: "body",
-                  value: bodyHtml.toString()
+                  value: bodyHtml.toString().replaceAll(/\\n/g, '')
                 })
 
                 return generateContent(fields, contentId, fileStat.birthtime, fileStat.mtime)
@@ -93,6 +123,7 @@ export default {
                 console.log("Unimplemented");
               }
             })
+            return state;
           } catch (e) {
             console.error(e)
           }
@@ -100,6 +131,7 @@ export default {
         "afterBuild": null,
         "bundle": null,
       }
-    })(),
+    }
+    )(),
   ]
 };

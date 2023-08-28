@@ -11,11 +11,10 @@
     "lint": "npx eslint ."
   },
   "dependencies": {
-    "@mantaroh/spear-cli": "^1.9.9",
-    "entities": "^4.5.0",
-    "escape-html": "^1.0.3",
+    "@mantaroh/spear-cli": "^1.9.10",
     "eslint": "^8.48.0",
     "front-matter": "^4.0.2",
+    "node-html-parser": "^6.1.6",
     "remark": "^14.0.3",
     "remark-html": "^15.0.2"
   }

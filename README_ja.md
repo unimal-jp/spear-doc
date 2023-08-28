@@ -1,22 +1,20 @@
 [English](./README.md)
 
-# Spear documentation Proposal
+# Spear ドキュメントサイトプロポーサル
 
-This repository is the proposal of Spear documentation.
+このレポジトリは、Spear のドキュメントサイトの提案用です。
 
-## How to build?
+## ビルド方法
 
-It's easy to build. Just you type the `yarn` and `yarn build`
+簡単に `yarn` と `yarn build` コマンドを実行することで確認できます。
 
-## How to edit?
+## 編集方法
 
-This documentation site will fetch from local mdx file.  
-The mdx is unified ecosystem[1], this file has `front-matter` fields and main content.  
-A documentation use the `front-matter` as field.
+このドキュメントサイトはローカルの mdx ファイルをフェッチします。
+MDX は unified ecosystem[1] で、`フロントマター` フィールドとメインコンテンツ部分を持ちます。
+`フロントマター` をフィールドとして利用します。
 
-Furthermore, this project's plugin 
-
-The sample data of mdx is the following:
+以下に mdx のサンプルコードを示します。
 
 ```
 ---
@@ -32,9 +30,9 @@ this is test posting.
 Sub menu document.
 ```
 
-This document project treat `title` field as field type. In this case, this doc has `title` field (text field type) and `body` field (rich text field type).
+このドキュメントサイトでは `title` をフィールドタイプとして扱います。この場合、 `title` フィールドはテキストとして、 `body` フィールドはリッチテキストとして扱います。
 
-Note that:
+注意:
 - At the moment, this project use `text` and `rich text` field only.
 - This project use the directory name as `content type` and `content id`.
   - If directory is `/data/blog/test.mdx`, `content_type` is `blog` and `content id` is `test`.
