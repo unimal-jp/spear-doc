@@ -114,7 +114,7 @@ export default {
                 }
                 fields.push({
                   key: "body",
-                  value: bodyHtml.toString().replaceAll(/\\n/g, '')
+                  value: bodyHtml.toString().replaceAll(/\n/g, '')
                 })
 
                 return generateContent(fields, contentId, fileStat.birthtime, fileStat.mtime)
