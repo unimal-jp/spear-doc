@@ -1,15 +1,18 @@
 import fs from 'node:fs/promises'
+import fse from 'fs-extra';
 import fm from 'front-matter'
 import { remark } from 'remark';
 import html from 'remark-html';
-import { parse } from "node-html-parser"
+import rehypeHighlight from 'rehype-highlight';
 
 export default {
   "projectName": "Spear document",
   "generateSitemap": false,
+  "srcDir": ["./src"],
   "plugins": [
     (() => {
 
+      const langs = ["en", "ja"];
       const generateHashFromString = (str) => {
         let hash = 0;
         if (str.length === 0) return hash;
@@ -64,11 +67,9 @@ export default {
           data: contents
         }
       }
-      return {
-        "pluginName": "markdown-client",
-        "configuration": null,
-        "beforeBuild": async (state, option) => {
-          try {
+
+      const injectApiClient = async (state) => {
+        try {
             state.jsGenerator.injectFakeApiClient({
               analytics: {
                 pageView: (params) => {
@@ -104,7 +105,7 @@ export default {
                 const fileStat = await fs.stat(`./data/${contentTypeId}/${contentId}.mdx`)
                 const file = await fs.readFile(`./data/${contentTypeId}/${contentId}.mdx`)
                 const {attributes, body} = fm(file.toString())
-                const bodyHtml = await remark().use(html).process(body);
+                const bodyHtml = await remark().use(html).use(rehypeHighlight).process(body);
                 const fields = [];
                 for (const key of Object.keys(attributes)) {
                   fields.push({
@@ -127,7 +128,33 @@ export default {
           } catch (e) {
             console.error(e)
           }
+      }
+
+      const copySrcDirToLangDir = async (spearSettings) => {
+        console.log('🐶🐶🐶🐶🐶🐶🐶🐶');
+        console.log(spearSettings.srcDir);
+        // copy src dir to lang dir which is under the node_modules/spear/ directory.
+        const newSrcDir = [];
+        for (const lang of langs) {
+          await fs.mkdir(`./node_modules/spear/src/${lang}`, {recursive: true});
+          console.log(spearSettings.srcDir);
+          for (const dir of spearSettings.srcDir) {
+            await fs.mkdir(`./node_modules/spear/${lang}/${dir}`, {recursive: true});
+            await fse.copySync(dir, `./node_modules/spear/src/${lang}/`);
+            newSrcDir.push(`./node_modules/spear/src/${lang}/`);
+          }
+        }
+        return newSrcDir;
+      }
+
+      return {
+        "pluginName": "markdown-client",
+        "configuration": async (settings) => {
+          const newDirs = await copySrcDirToLangDir(settings);
+          settings.srcDir = newDirs;
+          return settings;
         },
+        "beforeBuild": async (state) => { return await injectApiClient(state); },
         "afterBuild": null,
         "bundle": null,
       }

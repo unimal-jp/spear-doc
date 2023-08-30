@@ -17,21 +17,17 @@ header {
     }
 }
 
-.margined-section {
-    margin-top: 77px;
-    font-size: 1.2rem;
-
-    p {
-        text-align: center;
-    }
-}
-
-.container__spear-code {
-    width: 430px;
-    margin: auto;
-
-    pre {
-        border: 1px solid #b0b0b0;
-        border-radius: 2px;
+section.main {
+    text-align: center;
+    margin: auto auto;
+    max-width: 600px;
+    div {
+        h1 {
+            padding-top: 3em;
+        }
+        h2 {
+            padding-top: 4em;
+            margin-bottom: 1rem;
+        }
     }
 }
