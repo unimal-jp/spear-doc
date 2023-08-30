@@ -5,14 +5,22 @@
   "license": "ISC",
   "private": true,
   "scripts": {
-    "dev": "spear watch",
-    "build": "yarn lint && spear build",
-    "all": "cd ../ && yarn build && cd test && rm -rf node_modules && yarn && yarn build",
+    "dev-en": "spear watch --file spear.config-en",
+    "dev-jp": "spear watch --file spear.config-jp",
+    "clean": "rm -rf dist dist-*",
+    "build": "yarn build-redirect && yarn build-en && yarn build-jp && yarn after-build",
+    "build-redirect": "spear build --file spear.config-redirect",
+    "build-en": "spear build --file spear.config-en",
+    "build-jp": "spear build --file spear.config-jp",
+    "after-build": "mv dist-redirect dist && mv dist-en dist/en && mv dist-jp dist/jp",
     "lint": "npx eslint ."
   },
   "dependencies": {
-    "@spearly/spear-markdown-plugin": "file:/home/mantaroh/code/spear/packages/spear-plugins/markdown",
+    "@spearly/spear-cli": "/home/mantaroh/code/spear/packages/spear-cli",
+    "@spearly/spear-markdown-plugin": "^1.0.1",
     "eslint": "^8.48.0",
+    "html-minifier-terser": "^7.2.0",
+    "node-html-parser": "^6.1.6",
     "rehype-highlight": "^6.0.0"
   }
 }

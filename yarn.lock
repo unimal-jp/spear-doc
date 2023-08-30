@@ -136,10 +136,8 @@
     js-cookie "^3.0.5"
     uuid "^9.0.0"
 
-"@spearly/spear-cli@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@spearly/spear-cli/-/spear-cli-1.4.0.tgz#7a5914b214780c325ca6cfa8d9cfeaeab002b33e"
-  integrity sha512-DLp6tSiiuiClVS11GyeK2tOEV2D5IAyUaxSGRr0baaoKvebbsPeT+FRJR9PVYhSSiwi7M0I0ay6+1d2DQWUfyA==
+"@spearly/spear-cli@1.4.3", "@spearly/spear-cli@file:../spear/packages/spear-cli":
+  version "1.4.3"
   dependencies:
     "@spearly/cms-js-core" "1.0.16"
     "@types/live-server" "^1.2.1"
@@ -158,10 +156,12 @@
     sitemap "^7.1.1"
     yaml "^2.2.1"
 
-"@spearly/spear-markdown-plugin@file:../spear/packages/spear-plugins/markdown":
-  version "0.0.1"
+"@spearly/spear-markdown-plugin@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@spearly/spear-markdown-plugin/-/spear-markdown-plugin-1.0.1.tgz#17211072e3471ebaa26c4b14c68693ed234d6abe"
+  integrity sha512-3FRIGKqrukSX4MzLoCQUkRnYv00azzWcOuYCNSSZQSRBuRdypJnrpLMGs3EWk8r6wi8zHdVuW1Jmz/kQECbALg==
   dependencies:
-    "@spearly/spear-cli" "^1.4.0"
+    "@spearly/spear-cli" "1.4.3"
     front-matter "^4.0.2"
     remark "^14.0.3"
     remark-html "^15.0.2"
@@ -1443,7 +1443,7 @@ highlight.js@~11.8.0:
   resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.8.0.tgz"
   integrity sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==
 
-html-minifier-terser@^7.0.0-beta.0:
+html-minifier-terser@^7.0.0-beta.0, html-minifier-terser@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/html-minifier-terser/-/html-minifier-terser-7.2.0.tgz#18752e23a2f0ed4b0f550f217bb41693e975b942"
   integrity sha512-tXgn3QfqPIpGl9o+K5tpcj3/MN4SfLtsx2GWwBC3SSd0tXQGyF3gsSqad8loJgKZGM3ZxbYDd5yhiBIdWpmvLA==
@@ -2265,7 +2265,7 @@ node-html-parser@^5.3.3:
     css-select "^4.2.1"
     he "1.2.0"
 
-node-html-parser@^6.1.4:
+node-html-parser@^6.1.4, node-html-parser@^6.1.6:
   version "6.1.6"
   resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.6.tgz#8369a11d629a92ab2db2344bb650261135ac8e13"
   integrity sha512-C/MGDQ2NjdjzUq41bW9kW00MPZecAe/oo89vZEFLDfWoQVDk/DdML1yuxVVKLDMFIFax2VTq6Vpfzyn7z5yYgQ==
