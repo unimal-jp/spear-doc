@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url(../fonts/OpenSans-Regular.ttf);
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #F1ECF6;
+}
+
+header {
+  display: block;
+  text-align: center;
+  padding-top: 2rem;
+}
+header .spear-description {
+  font-size: 1.8rem;
+}
+header img {
+  padding-top: 2em;
+}
+
+section.main {
+  padding-bottom: 2rem;
+  text-align: center;
+  margin: auto auto;
+  max-width: calc(80% - 50px);
+}
+section.main div h1 {
+  padding-top: 3em;
+}
+section.main div h2 {
+  padding-top: 4em;
+  margin-bottom: 1rem;
+}
+section.main div ul {
+  width: 500px;
+  text-align: left;
+  margin: auto;
+}
+section.main div pre {
+  width: 500px;
+  margin: auto;
+  border: 1px solid #B0B0B0;
+  border-radius: 4px;
+}
+section.main div pre > code {
+  display: block;
+  padding: 1em;
+  text-align: left;
+}

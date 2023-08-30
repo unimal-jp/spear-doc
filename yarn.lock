@@ -2552,6 +2552,11 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha512-G08Dxvm4iDN3MLM0EsP62EDV9IuhXPR6blNz6Utcp7zyV3tr4HVNINt6MpaRWbxoOHT3Q7YN2P+jaHX8vUbgog==
 
+remark-classes@^0.0.21:
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/remark-classes/-/remark-classes-0.0.21.tgz#24c507f56b582c4ec6a78a60821817f7482e63bc"
+  integrity sha512-OxZ2SY2dX3xtTIDJBiBYP2PlgcHd0cLss6Z9pAGlh5MQBw2J/974YQIL0G63l6cJgR1XKpKxrEY/ndZ8mOLAJA==
+
 remark-html@^15.0.2:
   version "15.0.2"
   resolved "https://registry.yarnpkg.com/remark-html/-/remark-html-15.0.2.tgz#44ff77c876f037658b406662b5ce15e26ed34d80"

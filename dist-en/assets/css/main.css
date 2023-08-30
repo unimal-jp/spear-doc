@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url(./fonts/OpenSans-Regular.ttf);
+}
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #F1ECF6;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 2em;
+}
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+aside ul li > a {
+  color: rgb(23, 22, 29);
+  text-decoration: none;
+}
+aside h1, aside h2, aside h3, aside h4 {
+  line-height: 1.4;
+}
+aside .menu-summary {
+  cursor: pointer;
+  list-style: none;
+}
+aside details[open] svg {
+  transform: rotate(90deg);
+}
+aside svg {
+  transition: transform 0.2s ease;
+}
+
+header {
+  display: block;
+  text-align: center;
+}
+header .spear-description {
+  font-size: 1.8rem;
+}
+header img {
+  padding-top: 2em;
+}
+
+section.main {
+  text-align: center;
+  margin: auto auto;
+  max-width: calc(80% - 50px);
+}
+section.main div h1 {
+  padding-top: 3em;
+}
+section.main div h2 {
+  padding-top: 4em;
+  margin-bottom: 1rem;
+}
+section.main div ul {
+  width: 501px;
+  text-align: left;
+  margin: auto;
+}

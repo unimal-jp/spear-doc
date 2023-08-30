@@ -1,0 +1,42 @@
+aside.left-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-left: 2em;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 1.2em 0;
+        > li {
+            margin: 0.8em 0;
+            > a{
+                color: rgb(23, 22, 29);
+                text-decoration: none;
+            }
+
+            > ul {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    h1, h2, h3, h4 {
+        line-height: 1.4;
+    }
+
+    .menu-summary {
+        cursor: pointer;
+        list-style: none;
+    }
+
+    details[open] {
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+
+    svg {
+        transition: transform 0.2s ease;
+    }
+}

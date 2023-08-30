@@ -7,11 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{projectName}}</title>
   <link rel="stylesheet" href="./assets/css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+  <link rel="stylesheet" href="./assets/css/left-sidebar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+  <script>hljs.highlightAll();</script>
 </head>
 
 <body>
+  <left-sidebar></left-sidebar>
   <header>
     <img src="./images/logo.png">
     <div class="spear-description">
@@ -23,6 +27,9 @@
       <p>{%= top_body %}</p>
     </div>
   </section>
+
+
+  <script>hljs.highlightAll();</script>
 </body>
 
 </html>
