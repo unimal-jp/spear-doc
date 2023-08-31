@@ -37,7 +37,11 @@ export default {
         afterBuild: async (state) => {
           const pages = state.pagesList;
           for (const page of pages) {
-            const rawHtml = page.rawData.replaceAll("\\\\n", "\n").replaceAll("\\'", "'");
+            const rawHtml = page.rawData
+                                .replaceAll("\\\\n", "\n")  // Line break
+                                .replaceAll("\\'", "'")     // Single quote
+                                .replaceAll("%7B%7Blang%7D%7D", "en") // Language specific syntax({{lang}})
+                                .replaceAll("{{lang}}", "en")
             const element = parse(rawHtml);
             page.rawData = rawHtml;
             page.node = element;

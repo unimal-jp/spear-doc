@@ -11,7 +11,7 @@ export default {
   "distDir": "./dist-redirect",
   "plugins": [
     markdownPlugin({
-      directory: "data/jp",
+      directory: "data/en",
     }),
     {
       "pluginName": "redirect-plugin",

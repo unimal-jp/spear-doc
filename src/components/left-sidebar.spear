@@ -1,6 +1,6 @@
 <aside class="left-sidebar">
-    <ul>
-        <li cms-item cms-content-type="settings" cms-content="site">
+    <ul cms-item cms-content-type="settings" cms-content="site">
+        <li>
             <details open>
                 <summary class="menu-summary">
                     <h3>{%= settings_title-start-here %}
@@ -13,13 +13,13 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="/index.html">{%= settings_title-getting-started %}</a>
+                        <a href="/{{lang}}/index.html">{%= settings_title-getting-started %}</a>
                     </li>
                     <li>
-                        <a href="/intro/install.html">{%= settings_title-installation %}</a>
+                        <a href="/{{lang}}/intro/install.html">{%= settings_title-installation %}</a>
                     </li>
                     <li>
-                        <a href="/intro/build.html">{%= settings_title-build %}</a>
+                        <a href="/{{lang}}/intro/build.html">{%= settings_title-build %}</a>
                     </li>
                 </ul>
             </details>
@@ -27,7 +27,7 @@
         <li>
             <details open>
                 <summary class="menu-summary">
-                    <h3>Basic
+                    <h3>{%= settings_title-basic %}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true">
                             <path fill-rule="evenodd"
                                 d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"
@@ -37,7 +37,7 @@
                 </summary>
                 <ul>
                     <li cms-loop cms-content-type="basic">
-                        <a href="/basic/{%= basic_#alias %}.html">{%= basic_title %}</a>
+                        <a href="/{{lang}}/basic/{%= basic_#alias %}.html">{%= basic_title %}</a>
                     </li>
                 </ul>
             </details>
@@ -45,7 +45,7 @@
         <li>
             <details open>
                 <summary class="menu-summary">
-                    <h3>Embed Syntax
+                    <h3>{%= settings_title-embed-syntax %}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true">
                             <path fill-rule="evenodd"
                                 d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"
@@ -55,7 +55,7 @@
                 </summary>
                 <ul>
                     <li cms-loop cms-content-type="embed">
-                        <a href="/embed/{%= embed_#alias %}.html">{%= embed_title %}</a>
+                        <a href="/{{lang}}/embed/{%= embed_#alias %}.html">{%= embed_title %}</a>
                     </li>
                 </ul>
             </details>
