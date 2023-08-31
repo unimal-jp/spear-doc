@@ -8,7 +8,7 @@
     "dev-en": "spear watch --file spear.config-en",
     "dev-jp": "spear watch --file spear.config-jp",
     "clean": "rm -rf dist dist-*",
-    "build": "yarn build-redirect && yarn build-en && yarn build-jp && yarn after-build",
+    "build": "yarn clean && yarn build-redirect && yarn build-en && yarn build-jp && yarn after-build",
     "build-redirect": "spear build --file spear.config-redirect",
     "build-en": "spear build --file spear.config-en",
     "build-jp": "spear build --file spear.config-jp",
@@ -16,8 +16,8 @@
     "lint": "npx eslint ."
   },
   "dependencies": {
-    "@spearly/spear-cli": "/home/mantaroh/code/spear/packages/spear-cli",
-    "@spearly/spear-markdown-plugin": "/home/mantaroh/code/spear/packages/spear-plugins/markdown",
+    "@spearly/spear-cli": "^1.4.4",
+    "@spearly/spear-markdown-plugin": "^1.0.2",
     "eslint": "^8.48.0",
     "html-minifier-terser": "^7.2.0",
     "node-html-parser": "^6.1.6",

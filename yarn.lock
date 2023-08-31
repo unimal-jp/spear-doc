@@ -136,10 +136,10 @@
     js-cookie "^3.0.5"
     uuid "^9.0.0"
 
-"@spearly/spear-cli@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@spearly/spear-cli/-/spear-cli-1.4.0.tgz#7a5914b214780c325ca6cfa8d9cfeaeab002b33e"
-  integrity sha512-DLp6tSiiuiClVS11GyeK2tOEV2D5IAyUaxSGRr0baaoKvebbsPeT+FRJR9PVYhSSiwi7M0I0ay6+1d2DQWUfyA==
+"@spearly/spear-cli@1.4.4", "@spearly/spear-cli@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@spearly/spear-cli/-/spear-cli-1.4.4.tgz#b8bfd4db211130e31376e02179a708cb2e89c7da"
+  integrity sha512-ByFSCUQ+U5ulrRhHJG/9/gd+iTd/+wlU9dxclKLltpxlX+PrJoyU9nssMiX3e64T7X/LUp7wl2VLECx0Mr05HQ==
   dependencies:
     "@spearly/cms-js-core" "1.0.16"
     "@types/live-server" "^1.2.1"
@@ -158,30 +158,12 @@
     sitemap "^7.1.1"
     yaml "^2.2.1"
 
-"@spearly/spear-cli@file:../spear/packages/spear-cli":
-  version "1.4.2"
+"@spearly/spear-markdown-plugin@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@spearly/spear-markdown-plugin/-/spear-markdown-plugin-1.0.2.tgz#ab4c0cc26e673864dbce4378c286f91696782115"
+  integrity sha512-6Prm+tXOOwHw79k3C5h4lV/MWDg6UBpnPPreYCANW4itzoF+zZWtwvEXc9giXw1L0ANUCpH/Sv67zo1ZeSNnwQ==
   dependencies:
-    "@spearly/cms-js-core" "1.0.16"
-    "@types/live-server" "^1.2.1"
-    argparse "^2.0.1"
-    chalk "^5.2.0"
-    eslint "^8.34.0"
-    fs-extra "^11.1.0"
-    glob "^8.0.3"
-    html-minifier-terser "^7.0.0-beta.0"
-    live-server "^1.1.0"
-    memfs "^3.5.1"
-    mime-types "^2.1.35"
-    node-html-parser "^5.3.3"
-    node-watch "^0.7.3"
-    sass "^1.63.6"
-    sitemap "^7.1.1"
-    yaml "^2.2.1"
-
-"@spearly/spear-markdown-plugin@file:../spear/packages/spear-plugins/markdown":
-  version "1.0.0"
-  dependencies:
-    "@spearly/spear-cli" "1.4.0"
+    "@spearly/spear-cli" "1.4.4"
     front-matter "^4.0.2"
     remark "^14.0.3"
     remark-html "^15.0.2"

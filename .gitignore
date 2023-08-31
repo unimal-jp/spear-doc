@@ -1,3 +1,5 @@
 node_modules
 dist
+dist-en
+dist-jp
 yarn-error.log
