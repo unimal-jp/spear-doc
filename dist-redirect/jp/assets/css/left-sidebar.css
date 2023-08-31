@@ -1,0 +1,34 @@
+aside.left-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 2em;
+}
+aside.left-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.2em 0;
+}
+aside.left-sidebar ul > li {
+  margin: 0.8em 0;
+}
+aside.left-sidebar ul > li > a {
+  color: rgb(23, 22, 29);
+  text-decoration: none;
+}
+aside.left-sidebar ul > li > ul {
+  margin-left: 10px;
+}
+aside.left-sidebar h1, aside.left-sidebar h2, aside.left-sidebar h3, aside.left-sidebar h4 {
+  line-height: 1.4;
+}
+aside.left-sidebar .menu-summary {
+  cursor: pointer;
+  list-style: none;
+}
+aside.left-sidebar details[open] svg {
+  transform: rotate(90deg);
+}
+aside.left-sidebar svg {
+  transition: transform 0.2s ease;
+}

@@ -1,4 +1,4 @@
-import { HTMLElement, Node, parse } from 'node-html-parser';
+import { parse } from 'node-html-parser';
 import { minify } from "html-minifier-terser";
 
 const dummyContent = {
@@ -91,6 +91,6 @@ export default {
         return state
       },
       "bundle": null
-    }
+    },
   ]
 };

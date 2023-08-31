@@ -7,18 +7,6 @@ body {
   background-color: #F1ECF6;
 }
 
-header {
-  display: block;
-  text-align: center;
-  padding-top: 2rem;
-}
-header .spear-description {
-  font-size: 1.8rem;
-}
-header img {
-  padding-top: 2em;
-}
-
 section.main {
   padding-bottom: 2rem;
   text-align: center;

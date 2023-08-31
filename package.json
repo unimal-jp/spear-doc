@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@spearly/spear-cli": "/home/mantaroh/code/spear/packages/spear-cli",
-    "@spearly/spear-markdown-plugin": "^1.0.1",
+    "@spearly/spear-markdown-plugin": "/home/mantaroh/code/spear/packages/spear-plugins/markdown",
     "eslint": "^8.48.0",
     "html-minifier-terser": "^7.2.0",
     "node-html-parser": "^6.1.6",

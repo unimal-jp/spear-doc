@@ -1,0 +1,11 @@
+settings:
+  default: "jp"
+lang:
+  jp:
+    - title: ブログだよ
+    - description: ブログサイトです
+    - url: https://www.yahoo.co.jp
+  en:
+    - title: Blog
+    - description: This is blog site.
+    - url: https://www.google.com
