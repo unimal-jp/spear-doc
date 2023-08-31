@@ -1,9 +1,10 @@
 <header class="header">
     <nav>
         <div class="logo">
-            <div class="logo-container">
-                <img src="/images/spear-logo.png" alt="logo">
-            </div>
+            <ul class="logo-container">
+                <li><img src="/images/spear-logo.png" alt="spear-logo" class="spear-logo"></li>
+                <li><img src="/images/docs-logo.png" alt="docs-logo" class="docs-logo"></li>
+            </ul>
         </div>
         <div class="switch-language">
             <select class="select-language">
@@ -12,7 +13,7 @@
                 <option value="jp">Japanese</option>
             </select>
         </div>
-        <a href="https://github.com/unimal-jp/spear" class="github-link">
+        <a href="https://github.com/unimal-jp/spear" class="github-link" target="_blank">
             <image src="/images/github.svg" alt="github" class="github-icon">
         </a>
     </nav>

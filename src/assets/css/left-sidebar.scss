@@ -40,4 +40,8 @@ aside.left-sidebar {
     svg {
         transition: transform 0.2s ease;
     }
+
+    @media screen and (max-width: 980px) {
+        display: none;
+    }
 }

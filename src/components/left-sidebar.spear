@@ -1,9 +1,9 @@
 <aside class="left-sidebar">
     <ul>
-        <li>
+        <li cms-item cms-content-type="settings" cms-content="site">
             <details open>
                 <summary class="menu-summary">
-                    <h3>Start Here
+                    <h3>{%= settings_title-start-here %}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 1 16 16" width="16" height="16" aria-hidden="true">
                             <path fill-rule="evenodd"
                                 d="M6.22 3.22a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06L9.94 8 6.22 4.28a.75.75 0 010-1.06z"
@@ -13,13 +13,13 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="/index.html">Getting Stared</a>
+                        <a href="/index.html">{%= settings_title-getting-started %}</a>
                     </li>
                     <li>
-                        <a href="/intro/install.html">Installation</a>
+                        <a href="/intro/install.html">{%= settings_title-installation %}</a>
                     </li>
                     <li>
-                        <a href="/intro/build.html">Build</a>
+                        <a href="/intro/build.html">{%= settings_title-build %}</a>
                     </li>
                 </ul>
             </details>
