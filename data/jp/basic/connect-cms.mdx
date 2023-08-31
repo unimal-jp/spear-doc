@@ -1,8 +1,111 @@
 ---
-title: CMS へ接続する
+title: Connect a CMS
 ---
 
 # Connect to Spear CMS
 
-Spear can fetch data from Spear CMS.
+Spear can fetch data from Spear CMS. Recently, building jamstack site with Headless CMS is really popular.  
+Spear support the Spearly CMS.
+
+Before building site with Spearly CMS, you should [signup](https://spearly.com/{{lang}}/cms/).
+
+## Learn content type and contens, fields
+
+Spearly CMS provide [official documentation](https://docs.spearly.com/{{lang}})!  
+
+You can learn the following resources:
+- [Creating Content type](https://docs.spearly.com/{{lang}}/cms/tutorial/c-aQ01pUIdVLnGwvs8iAWf)
+- [Configuration Field type](https://docs.spearly.com/{{lang}}/cms/tutorial/c-GXzd14U3AYOisjQDa8Rh)
+- [Post content](https://docs.spearly.com/{{lang}}/cms/tutorial/c-WjAtTlOPQ9FUBpJ572C4)
+
+
+## Fetching configuration
+
+Usually, creating site wizard ask you to Spearly configuration, if you choosed `Use Spearly CMS` to yes.
+
+After wizard, you can set fetching configuration as well. You can see the detail for configuration, see the [install guide](/{{lang}}/intro/install.html).
+
+## Embedding content list into site
+
+The embedding way is simple. For detail, see [embed basic guide](/{{lang}}/embed/basic.html).
+
+- `/src/index.html`
+```html
+...\n
+<body>\n
+  <div cms-loop cms-content-type="blog">\n
+    <h1>{%= blog_title %}</h1>\n
+  </div>\n
+</body>\n
+```
+
+In above example, `{%= blog_title %}` is embed syntax. Spear will replace this string to fetched data. In this case, spear replace it to blog titles, and spear will repeat outputting this element which has `cms-loop`.
+
+Spear ended up generating the following HTML:
+- `/dist/index.html`
+```
+...\n
+<body>\n
+  <div>\n
+    <h1>First blog post</h1>\n
+  </div>\n
+  <div>\n
+    <h1>Second post</h1>\n
+  </div>\n
+</body>\n
+```
+
+This is displaying list data. You want to know detail, see [Loop syntax guide](/{{lang}}/embed/loop.html).
+
+## Embed a content into site
+
+You can embed single content as well! Embedding way is simillar to the way of embedding list content.
+
+- `/src/index.html`
+```html
+...\n
+<body>\n
+  <div cms-item cms-content-type="blog" cms-content="c-N2np7l945FMzCimfKuPP">\n
+    <h1>{%= blog_title %}</h1>\n
+  </div>\n
+</body>\n
+```
+
+Spear will fetch one conetent from Spearly CMS, because this sample has `cms-item` attribute and `cms-content` attribute.  
+
+Spear ended up generating the following HTML:
+- `/dist/index.html`
+```html
+...\n
+<body>\n
+  <div>\n
+    <h1>Second post</h1>\n
+  </div>\n
+</body>\n
+```
+
+## Routing
+
+Spear will create html file by each content. For example, you want to build blog site, you need to implement detail page.  
+
+- `/src/blog/[alias].html`
+```html
+...\n
+<body>\n
+  <div cms-item cms-content-type="blog" cms-content="c-N2np7l945FMzCimfKuPP">\n
+    <h1>{%= blog_title %}</h1>\n
+    <section>\n
+      {%= blog_body %}\n
+    </section>\n
+  </div>\n
+</body>\n
+...
+
+It's little difference of previous examples. This file name is `[alis].html`. This alias link to Spearly CMS alias name or content id.  
+This alias is similar to WordPress's slug. This alias is unique key of Spearly CMS.
+
+Spear will generate every contents page. (E.g., we have three contents(A/B/C), spear will generate `A.html` / `B.html` / `C.html`)
+
+If you want to reference this alias page from list of contents, you can use `{%= blog_#alias %}` embed sytax.  
+For detail, see [embed basic guide](/{{lang}}/embed/basic.html).
 

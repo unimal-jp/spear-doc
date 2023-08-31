@@ -48,7 +48,7 @@ The generated HTML is :
 Spear\'s component extension is `.spear`, and you should put component files under `src/components` directory.  
 You can change this project structure via `spear.config.mjs`.
 
-For detail of configuration file, see [Installation Guide](/intro/install.html).
+For detail of configuration file, see [Installation Guide](/{{lang}}/intro/install.html).
 
 ## Component Slot
 
@@ -56,10 +56,72 @@ Spear's component allow the slot feature.
 
 ### What is slot?
 
-Slot is communication way that parent to child component.
+Slot is communication way that parent to child component.  
+Imagine the situation that we want display image galleries.
 
+The almost HTML is same in each images:
 
-## Comming features:
+```html
+<div>\n
+  <figure>\n
+    <image src="/galleries/image-1.png" alt="image 1">\n
+  </figure>\n
+</div>\n
+```
+
+If we have 10 pictures, we should implement same HTML 10 times. In this case, we can use slot feature.
+
+If we implement the following component, we can reduce same code.
+
+- `/src/components/gallery-image.spear`
+```html
+<div>\n
+  <figure>\n
+    <slot>\n
+  </figure>\n
+<div>
+```
+- `/src/galleries.html`
+```html
+...\n
+<div>\n
+  <gallery-image><image src="/garraries/image-1.png" alt="image 1"></gallery-image>\n
+  <gallery-image><image src="/garraries/image-2.png" alt="image 2"></gallery-image>\n
+...
+  <gallry-image><image src="/garraries/image-10.png" alt="image 10"></gallery-image>\n
+</div>\n
+```
+
+### Named slot
+
+In simple site, it's enough to use a one slot in page. However, real world is complex.  
+Spear allow the multiple slot in page. In this case, we add name each slot, because the passed slot html doesn't know where should be injected.
+
+- `/src/components/multi-slot.spear`
+```html
+<div>\n
+  <ul>\n
+    <li><slot name="first"></slot></li>\n
+    <li><slot name="second"></slot></li>\n
+    <li><slot name="third"></slot></li>\n
+  </ul>\n
+</div>\n
+```
+
+- `/src/index.html`
+```html
+<div>\n
+  <main-component>\n
+    <div slot="first">This is first description</div>\n
+    <div slot="second">This is second description</div>\n
+    <div slot="third">This is third description</div>\n
+  </main-component>\n
+</div>\n
+```
+
+In above sample, `name` attribute value of slot is linked to parent's `slot` attribute value.
+
+## Comming features 🚀
 ### Props
 - Now, spear doesn't support props via component attributes.
   - For detail, see [this issue](https://github.com/unimal-jp/spear/issues/104).

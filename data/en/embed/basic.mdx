@@ -4,16 +4,58 @@ title: Embed syntax basic
 # Embed syntax basic
 
 There two way to embed syntax:  
-- Loop in the content
+- Embed list of content into site.
+- Embed single content into site.
 
-This is embed the few content in group(called `conetent-type`) into page.
+## Embed list of content into site
 
-- Display specific one content
+Spear seek `cms-loop` attribute all of pages. If spear detect `cms-loop`, spear will fetch data resource.
 
-## Loop in the content
+In this case, you should specify the following attribute as well.
 
-loop content description
+| attribute | value type | required or option | description |
+| --------- | ---------- | -------- | ----------- |
+| cms-loop  | N/A (No value) | N/A | This is flag for displaying contents list |
+| cms-content-type | string |  required | You should specify the content type name |
 
-## Display specific content
+### Loop element
 
-display specific description
+Spear will repeat the all of element which has `cms-loop`. 
+
+For example, if we have the following HTML code, spear will repeate generating this element by content amount.
+
+- `/src/index.html`
+```html
+...\n
+<body>\n
+  <ul>\n
+    <li cms-loop cms-content-type="news">\n
+      <h1>{%= blog_title %}</h1>\n
+    </li>\n
+  </ul>\n
+</body>\n
+```
+
+- generated html(`/dist/index.html`)
+```html
+...\n
+<body>\n
+  <ul>\n
+    <li>\n
+      <h1>2021/10/10</h1>\n
+    </li>\n
+    <li>\n
+      <h1>2021/10/11</h1>\n
+    </li>\n
+    <li>\n
+      <h1>2021/10/12</h1>\n
+    </li>\n
+  </ul>\n
+</body>\n
+```
+
+## Embed single content into site.
+
+This section is comming soon.
+
+

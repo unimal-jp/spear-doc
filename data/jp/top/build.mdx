@@ -1,42 +1,49 @@
 ---
-title: アナウンス
+title: Build
 ---
-# はじめるには
 
-## Spear とは？
+# Build
 
-Spear は簡単にビルドができる Web のフレームワークです。
+It is easy to build the spear project. You just execute `yarn build` command.
 
-## 主要な機能
-
-- **コンポーネント**: Spear はコンポーネント機能を提供しています。
-- **ヘッドレス CMS との接続**: Spear は Spearly CMS と言ったヘッドレス CMS と接続しコンテンツを取得できます。
-- **ノープログラム**: プログラム動作するようなランタイムは必要ありません。
-- **プラグイン**: Spear は機能を拡張するためにいくつかのプラグインを提供しています。
-
-## 使ってみましょう
-
-Spear のはじめとして、実際に使ってみることが一番早いと思います。以下の StackBlitz のエディタを開いてみたください。
-
-[![stackblitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/stackblitz-starters-p72h35?file=src%2Findex.html)
-
-## プロジェクトを始める
-
-以下のコマンドを実行するだけで Spear プロジェクトをローカルに作成できます。
-
-```
-> yarn create spear
+```bash
+# yarn install\n
+# yarn build\n
+....\n
+[Parse Pages]\n
+  [Page]: index(/)\n
+\n
+[Page]: articles/index\n
+\n
+[Page]: /index\n
+[Sitemap]: /sitemap.xml\n
 ```
 
-## Spear を学ぶ
+The generated directory is `dist` by default. You can check this directory.
 
-Spear のためのドキュメントはいくつかあります。以下のページかナビゲーションからアクセスしてください。
 
-🖊 プロジェクト構造 - Spear の基本的なプロジェクト構造を学べます。  
-🖊 コンポーネント - 他のフレームワークにもあるコンポーネントファイルを利用できます。  
-🖊 データのフェッチ - Spearly からデータをフェッチするのはとても簡単にできます。
+## Dev mode
 
-## Spear の拡張
+Spear has dev mode which has hot-realod feature. If you type `yarn dev` command, Spear will be started as dev mode.
 
-- Spear は [プラグイン機能](./plugins/)があり、用意に拡張できます。
-- もちろん、Spear OSS へ参加いただくこともできます。
+```bash
+# yarn dev\n
+...\n
+[Parse Pages]\n
+  [Page]: index(/)\n
+\n
+[Page]: articles/index\n
+\n
+[Page]: /index\n
+\n
+    Server started on port 8080 🚀\n
+    You can access the following URL:\n
+\n
+      http://localhost:8080\n
+```
+
+You can check generated site by accessing [http://localhost:8080](http://localhost:8080/).
+
+Note that:
+- If your machine use 8080 port, this dev mode failed. If you faced `8080 is already in use.` error, you should check local environment.
+  - In this case, you can change port via settings file. For detail, see [install document](/{{lang}}/intro/install.html).
