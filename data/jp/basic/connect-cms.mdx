@@ -57,7 +57,7 @@ Spear は最終的に以下の HTML を生成します。
 
 ## コンテンツをサイトへ埋め込む
 
-You can embed single content as well! Embedding way is simillar to the way of embedding list content.
+1つのコンテンツを埋め込むことも可能です！埋め込み方法はリストの埋め込みと同じです。
 
 - `/src/index.html`
 ```html
@@ -69,9 +69,10 @@ You can embed single content as well! Embedding way is simillar to the way of em
 </body>\n
 ```
 
-Spear will fetch one conetent from Spearly CMS, because this sample has `cms-item` attribute and `cms-content` attribute.  
+このサンプルは、`cms-item` と `cms-content` 属性があるため、Spear は Spearly CMS から1つのコンテンツをフェッチします。
 
-Spear ended up generating the following HTML:
+最終的に、Spear は以下の HTML を生成します。
+
 - `/dist/index.html`
 ```html
 ...\n
@@ -82,9 +83,9 @@ Spear ended up generating the following HTML:
 </body>\n
 ```
 
-## Routing
+## ルーティング
 
-Spear will create html file by each content. For example, you want to build blog site, you need to implement detail page.  
+Spear はコンテンツごとに HTML ファイルを生成します。例えば、ブログサイトを作る場合、詳細ページを作る必要があります。
 
 - `/src/blog/[alias].html`
 ```html
@@ -99,11 +100,11 @@ Spear will create html file by each content. For example, you want to build blog
 </body>\n
 ...
 
-It's little difference of previous examples. This file name is `[alis].html`. This alias link to Spearly CMS alias name or content id.  
-This alias is similar to WordPress's slug. This alias is unique key of Spearly CMS.
+以前の例と少し異なる書き方になります。ファイル名は `[alias].html` です。この `alias` は Spearly のエイリア名かコンテンツIDとリンクしています。
+このエイリアスは WordPress の slug と似たものです。Spearly CMS でユニークなものです。
 
-Spear will generate every contents page. (E.g., we have three contents(A/B/C), spear will generate `A.html` / `B.html` / `C.html`)
+Spear はそれぞれのコンテンツページを作ります。(もし、 [A/B/C]というコンテンツがあった場合、Spearは [`A.html`/`B.html`/`C.html`]を生成します。)
 
-If you want to reference this alias page from list of contents, you can use `{%= blog_#alias %}` embed sytax.  
-For detail, see [embed basic guide](/{{lang}}/embed/basic.html).
+もしコンテンツリストのページからこのエイリアスページを参照したい場合、 埋め込み文法である `{%= blog_#alias %}` が利用できます。
+詳細については、[embed basic guide](/{{lang}}/embed/basic.html)を参照してください。
 

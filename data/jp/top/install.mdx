@@ -1,26 +1,25 @@
 ---
-title: install
+title: インストール
 ---
 
-# Install
+# インストール
 
-This page explains the way to install spear and create project.
+このページでは Spear のインストール方法とプロジェクトの作成方法を説明します。
 
+## プロジェクトの作成
 
-## Create Project
-
-You need to install only npm, no additional global package like other CLI tools.  
-You just execute the following command.
+npm だけをインストールしていれば、他の CLI ツールのようなグローバルパッケージを追加する必要はありません。
+以下のコマンドを実行するだけです。
 
 ```bash
 # npm create spear
 ```
 
-After execute this command, create project wizard will start.
+このコマンドを実行後、プロジェクト作成のウィザードが始まります。
 
-## Wizard
+## ウィザード
 
-Spear wizard will ask the several questions for building web site.
+Spear のウィザードはウェブサイトを構築するためのいくつかの質問を聞いてきます。
 
 ```bash
 # npm create spear \n
@@ -37,25 +36,24 @@ Spear wizard will ask the several questions for building web site.
 
 ```
 
-
-- Project Name
-  - Input your paroject what you want to.
-- Use Spearly CMS
-  - If you need to integrate with Spearly CMS, You type [yes]
-  - For detail, see the [Connect to CMS](/{{lang}}/basic/connect-cms.html), 
-- Spearly CMS API KEY 
-  - If previous question is [yes], You need to input the Spearly CMS API Key.
-- Template type
-  - You can choose project template from `basic` or `empty`.
-- Sitemap
-  - If you want to generate the sitemap, you type [yes].
+- `Name of your project` : プロジェクト名
+  - 希望のプロジェクト名を入力します。
+- `Use Spearly CMS` : Spearly CMS 利用の有無
+  - もし Spearly CMS と連携する必要があれば「Yes」を選択します。
+  - 詳細については, [CMSとの接続](/{{lang}}/basic/connect-cms.html)を参照してください。
+- Spearly CMS API KEY  : Spearly CMS の API キー
+  - もし直前の質問に「Yes」と答えた場合、Spearly CMS の API キーを入力する必要があります。
+- Template type : テンプレートタイプ
+  - `basic` と `empty` から希望のプロジェクトテンプレートを選択します。
+- Sitemap : サイトマップ
+  - もしサイトマップを生成したい場合は「Yes」を選択します。
 - URL
-  - If previous question is [yes], you need to input your hosting URL.
-  - You can set this value after wizard by configuraiton.
+  - もし直前の質問に「Yes」と答えた場合、ホスティング先のURLを入力する必要があります。
+  - このウィザード設定後でも、設定ファイルを変更することで値を変えられます。
 
-## Spear Project Configuration
+## Spear プロジェクト設定
 
-Spear will built based on `spear.config.mjs` like bellow:
+Spear は以下のような `spear.config.mjs` を元にビルドしています。
 
 ```javascript
 export default {\n
@@ -66,24 +64,24 @@ export default {\n
 }
 ```
 
-You can edit this configuration file, an allowed option parameter is 
+この設定ファイルは編集可能で、以下のオプションパラメータを許可しています。
 
-### Setting parameter
+### 設定パラメータ
 
-| Setting key | Setting value type | Description |
+| 設定 key    | 設定値の型 | 説明 |
 | ----------- | ------------------ | ----------- |
-| projectName | string             | Project Name. (This value used by title tag if title has `{{ projectName }})` |
-| spearlyAuthKey   | string        | Team's Spearly Authentication Key (Token) |
-| generateSitemap  | boolean       | If this option is true, spear will generate sitemap.xml. |
-| siteURL          | string        | If generateSitemap option is true, you need to specify own url. |
-| plugins          | array<HookApi>| You can specify plugin. Spear provide three plugins. For detail, see [Plugins](/{{lang}}/basic/plugin.html). |
-| quietMode        | boolean       | If this option is true, Spear doesn't any output. |
-| embedMode        | boolean       | If this option is true, Spear will embed image resource into HTML. |
-| debugMode        | boolean       | If this option is true, Spear will inject debug information into Element. |
-| generateComponents| boolean      | If this option is true, Spear will generate component's HTML. |
-| componentsFolder | string        | Specify components folder |
-| srcDir           | string        | Specify source directory  |
-| port             | number        | Server port number of dev mode. |
-| host             | string        | Server host name of dev mode. |
-| apiDomain        | string        | You can specify the api domain. |
-| crossOriginIsolation| boolean    | If run spear in browswer with Web Containers, enable this option. |
+| projectName | string             | プロジェクト名 (この値はタイトルに {{projectName}} があるタグで利用されます) |
+| spearlyAuthKey   | string        | チームの Spealry 認証キー(トークン) |
+| generateSitemap  | boolean       | もしこのオプションが true の場合、 Spear は sitemap.xml を生成します。 |
+| siteURL          | string        | もし generateSitemap オプションが true の場合、自身のURLを指定する必要があります。 |
+| plugins          | array<HookApi>| プラグインを指定します。Spear は3つのプラグインを提供しています。詳細については、[Plugins](/{{lang}}/basic/plugin.html)を参照してください。 |
+| quietMode        | boolean       | もしこのオプションが true の場合、Spear は何も出力しません。 |
+| embedMode        | boolean       | もしこのオプションが true の場合、Spear はイメージリソースを HTML に埋め込みます。 |
+| debugMode        | boolean       | もしこのオプションが true の場合、Spear はデバッグ情報を HTML 要素に埋め込みます。 |
+| generateComponents| boolean      | もしこのオプションが true の場合、Spear はコンポーネントの HTML も出力します。 |
+| componentsFolder | string        | コンポーネントフォルダを指定します。 |
+| srcDir           | string        | ソースディレクトリを指定します。 |
+| port             | number        | 開発モードのサーバーポートを指定します。 |
+| host             | string        | 開発モードのホスト名をしています。 |
+| apiDomain        | string        | API のドメインを指定します。 |
+| crossOriginIsolation| boolean    | Web Containers を使って Spear をブラウザ上で動かす場合、このオプションを有効にします。 |

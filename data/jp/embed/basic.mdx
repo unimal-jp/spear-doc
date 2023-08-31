@@ -1,28 +1,28 @@
 ---
-title: Embed syntax basic
+title: 基本埋め込み文法
 ---
-# Embed syntax basic
+# 埋め込み文法の基本
 
-There two way to embed syntax:  
-- Embed list of content into site.
-- Embed single content into site.
+埋め込み文法には大まかに2種類存在します。
+- コンテンツのリストをサイトに埋め込む
+- 1つのコンテンツをサイトに埋め込む
 
-## Embed list of content into site
+## コンテンツのリストをサイトに埋め込む
 
-Spear seek `cms-loop` attribute all of pages. If spear detect `cms-loop`, spear will fetch data resource.
+Spear は全ページから `cms-loop` 属性を検索します。もし Spear が `cms-loop` を見つけたら、データリソースからデータをフェッチします。
 
-In this case, you should specify the following attribute as well.
+この場合、以下の属性も指定する必要があります。
 
-| attribute | value type | required or option | description |
+| 属性 | 属性値の型 | 必須 or オプション | 説明 |
 | --------- | ---------- | -------- | ----------- |
-| cms-loop  | N/A (No value) | N/A | This is flag for displaying contents list |
-| cms-content-type | string |  required | You should specify the content type name |
+| cms-loop  | N/A (No value) | N/A | これはコンテンツリストを表示するかどうかのフラグです。 |
+| cms-content-type | string |  required | コンテンツタイプ名を指定します。 |
 
-### Loop element
+### ループ要素
 
-Spear will repeat the all of element which has `cms-loop`. 
+Spear は `cms-loop` 属性を持つ要素内のすべてを繰り返し生成します。
 
-For example, if we have the following HTML code, spear will repeate generating this element by content amount.
+例えば、以下の HTML コードの場合、コンテンツの数だけ要素の生成を繰り返します。
 
 - `/src/index.html`
 ```html
@@ -54,8 +54,7 @@ For example, if we have the following HTML code, spear will repeate generating t
 </body>\n
 ```
 
-## Embed single content into site.
+## 1つのコンテンツをサイトへ埋め込む
 
-This section is comming soon.
-
+このドキュメントは公開予定です。
 
