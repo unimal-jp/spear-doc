@@ -1,33 +1,33 @@
 ---
-title: Connect a CMS
+title: CMS へ接続する
 ---
 
-# Connect to Spear CMS
+# Spearly CMS へ接続する方法
 
-Spear can fetch data from Spear CMS. Recently, building jamstack site with Headless CMS is really popular.  
-Spear support the Spearly CMS.
+Spear は Spearly CMS からデータをフェッチできます。近年、ヘッドレス CMS を使ってジャムスタックサイトを構築するのは大変人気があります。  
+Spear は Spearly CMS をサポートしています。
 
-Before building site with Spearly CMS, you should [signup](https://spearly.com/{{lang}}/cms/).
+Spearly CMS を使ったサイトを構築する前に、Spearly CMS に[サインアップ](https://spearly.com/{{lang}}/cms/)する必要があります。
 
-## Learn content type and contens, fields
+## コンテンツタイプ・コンテンツ・フィールドを学ぶ
 
-Spearly CMS provide [official documentation](https://docs.spearly.com/{{lang}})!  
+Spearly CMS は[公式ドキュメント](https://docs.spearly.com/{{lang}})を公開しています。
 
-You can learn the following resources:
-- [Creating Content type](https://docs.spearly.com/{{lang}}/cms/tutorial/c-aQ01pUIdVLnGwvs8iAWf)
-- [Configuration Field type](https://docs.spearly.com/{{lang}}/cms/tutorial/c-GXzd14U3AYOisjQDa8Rh)
-- [Post content](https://docs.spearly.com/{{lang}}/cms/tutorial/c-WjAtTlOPQ9FUBpJ572C4)
+以下のリソースから学習することができます。
+- [コンテンツタイプを作成する](https://docs.spearly.com/{{lang}}/cms/tutorial/c-aQ01pUIdVLnGwvs8iAWf)
+- [フィールドタイプを設定する](https://docs.spearly.com/{{lang}}/cms/tutorial/c-GXzd14U3AYOisjQDa8Rh)
+- [コンテンツを作成する](https://docs.spearly.com/{{lang}}/cms/tutorial/c-WjAtTlOPQ9FUBpJ572C4)
 
 
-## Fetching configuration
+## フェッチ設定
 
-Usually, creating site wizard ask you to Spearly configuration, if you choosed `Use Spearly CMS` to yes.
+通常、Spearly の設定はウィザードで「Use Spearly CMS」の質問に対して Yes と回答すれば、Spearly に関する設定も質問されます。
 
-After wizard, you can set fetching configuration as well. You can see the detail for configuration, see the [install guide](/{{lang}}/intro/install.html).
+ウィザードが終了した後でも、フェッチ設定を変更することができます。設定ファイルの詳細については、[インストールガイド](/{{lang}}/intro/install.html) を参照してください。
 
-## Embedding content list into site
+## コンテンツリストをサイトに埋め込む
 
-The embedding way is simple. For detail, see [embed basic guide](/{{lang}}/embed/basic.html).
+埋め込み方法は簡単です。詳細は[埋め込み基本ガイド](/{{lang}}/embed/basic.html)を参照してください。
 
 - `/src/index.html`
 ```html
@@ -38,10 +38,10 @@ The embedding way is simple. For detail, see [embed basic guide](/{{lang}}/embed
   </div>\n
 </body>\n
 ```
+上記サンプルの `{%= blog_title %}` は埋め込み文法です。Spear はこの埋め込み文法の文字列をフェッチしたデータに置換します。
+このケースでは、Spear はコンテンツのタイトルに置換し、`cms-loop` 属性のある要素を繰り返し出力します。
 
-In above example, `{%= blog_title %}` is embed syntax. Spear will replace this string to fetched data. In this case, spear replace it to blog titles, and spear will repeat outputting this element which has `cms-loop`.
-
-Spear ended up generating the following HTML:
+Spear は最終的に以下の HTML を生成します。
 - `/dist/index.html`
 ```
 ...\n
@@ -55,9 +55,7 @@ Spear ended up generating the following HTML:
 </body>\n
 ```
 
-This is displaying list data. You want to know detail, see [Loop syntax guide](/{{lang}}/embed/loop.html).
-
-## Embed a content into site
+## コンテンツをサイトへ埋め込む
 
 You can embed single content as well! Embedding way is simillar to the way of embedding list content.
 

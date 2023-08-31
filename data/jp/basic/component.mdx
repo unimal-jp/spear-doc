@@ -1,13 +1,13 @@
 ---
-title: Component
+title: コンポーネント
 ---
-# Spear Component
+# Spear のコンポーネント
 
-Spear support component. This is similar to other web framework like Vue, Astro.
+Spear はコンポーネントをサポートしています。これは他の Vue や Astro と似た機能です。
 
-## Simple usage
+## 簡単な使い方例
 
-This is most simple component example:
+簡単なコンポーネントの例です。
 
 - `/src/components/test-component.spear`
 ```html\n
@@ -23,7 +23,7 @@ This is most simple component example:
 </body>\n
 ```
 
-The generated HTML is :
+生成された HTML は以下のようになります。
 
 - `/dist/index.html`
 ```
@@ -43,23 +43,23 @@ The generated HTML is :
 </html>\n
 ```
 
-## Component basic
+## コンポーネントの基本
 
-Spear\'s component extension is `.spear`, and you should put component files under `src/components` directory.  
-You can change this project structure via `spear.config.mjs`.
+Spear のコンポーネントの拡張子は `.spear` です。そして、このコンポーネントファイルは `src/components` ディレクトリに保存する必要があります。  
+プロジェクト構造を変更するには `spear.config.mjs` を変更する必要があります。
 
-For detail of configuration file, see [Installation Guide](/{{lang}}/intro/install.html).
+設定ファイルの詳細については、[インストールガイド](/{{lang}}/intro/install.html)を参照してください。
 
-## Component Slot
+## コンポーネントスロット
 
-Spear's component allow the slot feature.
+Spear はスロット機能を提供しています。
 
-### What is slot?
+### スロットとは？
 
-Slot is communication way that parent to child component.  
-Imagine the situation that we want display image galleries.
+スロットは親ページとコンポーネント間でコミュニケーションをする手段です。
+例えば、イメージギャラリーを表示する事を想像してみてください。
 
-The almost HTML is same in each images:
+各画像で表示すべき HTML はほとんど同じものになります。
 
 ```html
 <div>\n
@@ -69,9 +69,9 @@ The almost HTML is same in each images:
 </div>\n
 ```
 
-If we have 10 pictures, we should implement same HTML 10 times. In this case, we can use slot feature.
+もし10個の画像を表示する場合、この同じような HTML を10回実装する必要があります。このような場合で、スロット機能を使うことができます。
 
-If we implement the following component, we can reduce same code.
+もし以下のようなコンポーネントを実装すれば、重複するコードを削減することができます。
 
 - `/src/components/gallery-image.spear`
 ```html
@@ -92,10 +92,10 @@ If we implement the following component, we can reduce same code.
 </div>\n
 ```
 
-### Named slot
+### 名前付きスロット
 
-In simple site, it's enough to use a one slot in page. However, real world is complex.  
-Spear allow the multiple slot in page. In this case, we add name each slot, because the passed slot html doesn't know where should be injected.
+簡単なサイトであれば、1つのスロットで十分かもしれません。しかし、現実世界は複雑です。  
+Spear は1つのコンポーネント内に複数スロットをサポートしています。この場合、渡ってきたスロットの HTML はどこに挿入すべきか分からなくなるため、各スロットに名前をつける必要があります。
 
 - `/src/components/multi-slot.spear`
 ```html
@@ -119,10 +119,10 @@ Spear allow the multiple slot in page. In this case, we add name each slot, beca
 </div>\n
 ```
 
-In above sample, `name` attribute value of slot is linked to parent's `slot` attribute value.
+上記サンプルでは、 スロットの `name` 属性値と親ページの `slot` 属性値はリンクしています。
 
-## Comming features 🚀
+## 近日公開予定の機能 🚀
 ### Props
-- Now, spear doesn't support props via component attributes.
-  - For detail, see [this issue](https://github.com/unimal-jp/spear/issues/104).
+- 現在、Spear はコンポーネントの属性値の Props をサポートしていません。
+  - 詳細については、[この Issue ](https://github.com/unimal-jp/spear/issues/104)を参照してください。
 
