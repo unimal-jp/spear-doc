@@ -1,0 +1,15 @@
+header.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    > nav {
+        width: calc(100vw - 1.1rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo {
+        flex-grow: 1;
+    }
+}

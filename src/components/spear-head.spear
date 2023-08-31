@@ -1,0 +1,18 @@
+<header class="header">
+    <nav>
+        <div class="logo">
+            <img src="/images/logo.png" alt="logo">
+        </div>
+        <div class="switch-language">
+            <div class="switch-language__item">
+                <a href="#" class="switch-language__link">English</a>
+            </div>
+            <div class="switch-language__item">
+                <a href="#" class="switch-language__link">日本語</a>
+            </div>
+        </div>
+        <a href="https://github.com/unimal-jp/spear">
+            <image src="/images/github.svg" alt="github" class="github-icon">
+        </a>
+    </nav>
+</header>
