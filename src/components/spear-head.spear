@@ -1,18 +1,34 @@
 <header class="header">
     <nav>
         <div class="logo">
-            <img src="/images/logo.png" alt="logo">
+            <div class="logo-container">
+                <img src="/images/spear-logo.png" alt="logo">
+            </div>
         </div>
         <div class="switch-language">
-            <div class="switch-language__item">
-                <a href="#" class="switch-language__link">English</a>
-            </div>
-            <div class="switch-language__item">
-                <a href="#" class="switch-language__link">日本語</a>
-            </div>
+            <select class="select-language">
+                <option selected value="none">ChooseLanguage</option>
+                <option value="en">English</option>
+                <option value="jp">Japanese</option>
+            </select>
         </div>
-        <a href="https://github.com/unimal-jp/spear">
+        <a href="https://github.com/unimal-jp/spear" class="github-link">
             <image src="/images/github.svg" alt="github" class="github-icon">
         </a>
     </nav>
+    <script>
+        const languageSelector = document.querySelector('select.select-language');
+        languageSelector.addEventListener('change', (e) => {
+            const language = e.target.value;
+            if (language === 'none') return;
+
+            const path = window.location.pathname;
+            const currentLanguage = path.split('/')[1];
+            if (language !== currentLanguage) {
+                const newPath = path.replace(currentLanguage, language);
+                // redirect new path
+                window.location.pathname = newPath;
+            }
+        });
+    </script>
 </header>

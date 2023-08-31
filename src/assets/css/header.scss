@@ -8,8 +8,19 @@ header.header {
         display: flex;
         align-items: center;
         justify-content: center;
+
+        a.github-link {
+            width: 30px;
+
+            img {
+                width: 30px;
+                height: 30px;
+                margin-left: 10px;
+            }
+        }
     }
     .logo {
         flex-grow: 1;
+        justify-content: flex-start;
     }
 }
