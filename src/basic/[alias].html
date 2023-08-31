@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link refl="stylesheet" href="../assets/css/basic-content.css">
-    <link refl="stylesheet" href="../assets/css/left-sidebar.css">
-    <title>Basic | </title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/left-sidebar.css">
+    <title>Basic | Spear Document</title>
 </head>
 <body>
-    <div cms-item cms-content-type="basic">
-        <article>
-            {%= basic_body %}
-        </article>
-    </div>
+    <left-sidebar></left-sidebar>
+    <section class="main">
+        <div cms-item cms-content-type="basic">
+            <article>
+                {%= basic_body %}
+            </article>
+        </div>
+    </section>
    
 </body>
 </html>

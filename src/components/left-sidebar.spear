@@ -13,13 +13,13 @@
                 </summary>
                 <ul>
                     <li>
-                        <a href="./index.html">Getting Stared</a>
+                        <a href="/index.html">Getting Stared</a>
                     </li>
                     <li>
-                        <a href="./intro/install.html">Installation</a>
+                        <a href="/intro/install.html">Installation</a>
                     </li>
                     <li>
-                        <a href="./intro/build.html">Build</a>
+                        <a href="/intro/build.html">Build</a>
                     </li>
                 </ul>
             </details>
@@ -37,7 +37,7 @@
                 </summary>
                 <ul>
                     <li cms-loop cms-content-type="basic">
-                        <a href="./basic/{%= basic_#alias %}.html">{%= basic_title %}</a>
+                        <a href="/basic/{%= basic_#alias %}.html">{%= basic_title %}</a>
                     </li>
                 </ul>
             </details>
@@ -55,7 +55,7 @@
                 </summary>
                 <ul>
                     <li cms-loop cms-content-type="embed">
-                        <a href="./embed/{%= embed_#alias %}.html">{%= embed_title %}</a>
+                        <a href="/embed/{%= embed_#alias %}.html">{%= embed_title %}</a>
                     </li>
                 </ul>
             </details>
