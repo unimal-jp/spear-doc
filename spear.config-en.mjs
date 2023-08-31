@@ -1,11 +1,19 @@
 import { markdownPlugin } from "@spearly/spear-markdown-plugin";
 import { spearSEO } from "@spearly/spear-cli/dist/plugins/spear-seo.js";
-import { remark } from "remark";
-import html from "remark-html";
-import { rehype } from "rehype";
-import rehypeHighlight from "rehype-highlight";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import remarkToc from "remark-toc";
+import { parse } from "node-html-parser";
 
-const preprocessor = rehype().use(rehypeHighlight) //remark().use(html);
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(remarkToc)
+  .use(rehypeStringify)
 
 export default {
   "projectName": "Spear document",
@@ -16,18 +24,25 @@ export default {
     spearSEO("./seo.config.mjs"),
     markdownPlugin({
       directory: "data/en",
-      // processor: preprocessor,
+      processor: processor,
       bodyPostProcessor: (body) => {
         return body.replaceAll("\n", "");
       },
     }),
     (() => {
-
       return {
-        pluginName: "doc-i18n",
+        pluginName: "doc-line-break-convert",
         configuration: null,
         beforeBuild: null,
-        afterBuild: null,
+        afterBuild: async (state) => {
+          const pages = state.pagesList;
+          for (const page of pages) {
+            const rawHtml = page.rawData.replaceAll("\\\\n", "\n").replaceAll("\\'", "'");
+            const element = parse(rawHtml);
+            page.rawData = rawHtml;
+            page.node = element;
+          }
+        },
         bundle: null,
       }
     })(),

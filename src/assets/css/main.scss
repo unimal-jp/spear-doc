@@ -18,17 +18,34 @@ section.main {
     margin: auto auto;
     max-width: calc(80% - 50px);
     div {
+        width: 500px;
+        margin: auto;
+
+        p {
+            text-align: left;
+        }
+
         h1 {
             padding-top: 3em;
         }
+
         h2 {
             padding-top: 4em;
             margin-bottom: 1rem;
         }
+
+        h3, h4, h5 {
+            text-align: left;
+        }
+
         ul {
             width: 500px;
             text-align: left;
             margin: auto;
+        }
+
+        p:has(+ a) {
+            text-align: center;
         }
 
         pre {
@@ -41,6 +58,20 @@ section.main {
                 display: block;
                 padding: 1em;
                 text-align: left;
+                overflow-x: scroll;
+            }
+        }
+
+        table {
+            width: 500px;
+            margin: auto;
+            border-collapse: collapse;
+            border: 1px solid #B0B0B0;
+            border-radius: 4px;
+
+            th, td {
+                border: 1px solid #B0B0B0;
+                padding: 0.5em;
             }
         }
     }

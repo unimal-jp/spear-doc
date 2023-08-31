@@ -1,8 +1,66 @@
 ---
 title: Component
 ---
-
 # Spear Component
 
-Spear support component feature.
+Spear support component. This is similar to other web framework like Vue, Astro.
+
+## Simple usage
+
+This is most simple component example:
+
+- `/src/components/test-component.spear`
+```html\n
+<div>\n
+  <h1>This is test component</h1>\n
+</div>\n
+```
+
+- `/src/index.html`
+```
+<body>\n
+  <test-component></test-component>\n
+</body>\n
+```
+
+The generated HTML is :
+
+- `/dist/index.html`
+```
+<!DOCTYPE html>\n
+<html lang="en">\n
+<head>\n
+  <meta charset="UTF-8">\n
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">\n
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n
+  <title>{{projectName}}</title>\n
+</head>\n
+<body>\n
+  <div>\n
+    <h1>This is test component</h1>\n
+  </div>\n
+</body>\n
+</html>\n
+```
+
+## Component basic
+
+Spear\'s component extension is `.spear`, and you should put component files under `src/components` directory.  
+You can change this project structure via `spear.config.mjs`.
+
+For detail of configuration file, see [Installation Guide](/intro/install.html).
+
+## Component Slot
+
+Spear's component allow the slot feature.
+
+### What is slot?
+
+Slot is communication way that parent to child component.
+
+
+## Comming features:
+### Props
+- Now, spear doesn't support props via component attributes.
+  - For detail, see [this issue](https://github.com/unimal-jp/spear/issues/104).
 

@@ -6,5 +6,44 @@ title: Build
 
 It is easy to build the spear project. You just execute `yarn build` command.
 
+```bash
+# yarn install\n
+# yarn build\n
+....\n
+[Parse Pages]\n
+  [Page]: index(/)\n
+\n
+[Page]: articles/index\n
+\n
+[Page]: /index\n
+[Sitemap]: /sitemap.xml\n
+```
+
+The generated directory is `dist` by default. You can check this directory.
 
 
+## Dev mode
+
+Spear has dev mode which has hot-realod feature. If you type `yarn dev` command, Spear will be started as dev mode.
+
+```bash
+# yarn dev\n
+...\n
+[Parse Pages]\n
+  [Page]: index(/)\n
+\n
+[Page]: articles/index\n
+\n
+[Page]: /index\n
+\n
+    Server started on port 8080 🚀\n
+    You can access the following URL:\n
+\n
+      http://localhost:8080\n
+```
+
+You can check generated site by accessing [http://localhost:8080](http://localhost:8080/).
+
+Note that:
+- If your machine use 8080 port, this dev mode failed. If you faced `8080 is already in use.` error, you should check local environment.
+  - In this case, you can change port via settings file. For detail, see [install document](/intro/install.html).

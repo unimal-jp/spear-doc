@@ -12,7 +12,7 @@ This page explains the way to install spear and create project.
 You need to install only npm, no additional global package like other CLI tools.  
 You just execute the following command.
 
-```
+```bash
 # npm create spear
 ```
 
@@ -22,45 +22,68 @@ After execute this command, create project wizard will start.
 
 Spear wizard will ask the several questions for building web site.
 
-- Name of your project
+```bash
+# npm create spear \n
+### Welcome to Spear CLI ###\n
+\n
+\n
+? Name of your project\n
+? Use Spearly CMS\n
+? Enter your Spearly CMS API KEY\n
+? Choose template type\n
+? Generate Sitemap?\n
+? Enter your hosting URL (Example: https://foobar.netlify.app/)\n
+? Add ESLint for JavaScript code quality?\n
+
+```
+
+
+- Project Name
   - Input your paroject what you want to.
 - Use Spearly CMS
   - If you need to integrate with Spearly CMS, You type [yes]
   - For detail, see the [Connect to CMS](/basic/connect-cms.html), 
-- Enter your Spearly CMS API KEY 
+- Spearly CMS API KEY 
   - If previous question is [yes], You need to input the Spearly CMS API Key.
-- Choose template type
-  - You can choose project template from 'basic' or 'empty'.
-- Generate Sitemap? Yes
+- Template type
+  - You can choose project template from `basic` or `empty`.
+- Sitemap
   - If you want to generate the sitemap, you type [yes].
-- Enter your hosting URL (Example: https://foobar.netlify.app/)
+- URL
   - If previous question is [yes], you need to input your hosting URL.
   - You can set this value after wizard by configuraiton.
 
 ## Spear Project Configuration
 
-The spear starter is the fastest way to explore the Spear feature. Open it in StackBlitz editor:
+Spear will built based on `spear.config.mjs` like bellow:
 
-[![stackblitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/stackblitz-starters-p72h35?file=src%2Findex.html)
-
-
-## Start first project
-
-You can create Spear project and run locally without many time.
-
-```
-> yarn create spear
+```javascript
+export default {\n
+  "projectName": "Sample Project",\n
+  "generateSitemap": false,\n
+  "siteURL": "https://sample.com",\n
+  "spearlyAuthKey": "***********"\n
+}
 ```
 
-## Learn Spear
+You can edit this configuration file, an allowed option parameter is 
 
-We are provide documents for Spear. You can see the following pages or navigator:
+### Setting parameter
 
-🖊 Project Structure - You can learn basic Spear project structures.  
-🖊 Copmonent - Spear can use component file like other web framework.  
-🖊 Fetching data - To fetch data from Spearly is easy.  
-
-## Extend Spear
-
-- Spear has [plugin feature](./plugins/) which enabling extend feature.
-- You can also contribute to the Spear OSS.
+| Setting key | Setting value type | Description |
+| ----------- | ------------------ | ----------- |
+| projectName | string             | Project Name. (This value used by title tag if title has `{{ projectName }})` |
+| spearlyAuthKey   | string        | Team's Spearly Authentication Key (Token) |
+| generateSitemap  | boolean       | If this option is true, spear will generate sitemap.xml. |
+| siteURL          | string        | If generateSitemap option is true, you need to specify own url. |
+| plugins          | array<HookApi>| You can specify plugin. Spear provide three plugins. For detail, see [Plugins](/basic/plugin.html). |
+| quietMode        | boolean       | If this option is true, Spear doesn't any output. |
+| embedMode        | boolean       | If this option is true, Spear will embed image resource into HTML. |
+| debugMode        | boolean       | If this option is true, Spear will inject debug information into Element. |
+| generateComponents| boolean      | If this option is true, Spear will generate component's HTML. |
+| componentsFolder | string        | Specify components folder |
+| srcDir           | string        | Specify source directory  |
+| port             | number        | Server port number of dev mode. |
+| host             | string        | Server host name of dev mode. |
+| apiDomain        | string        | You can specify the api domain. |
+| crossOriginIsolation| boolean    | If run spear in browswer with Web Containers, enable this option. |
