@@ -1,0 +1,145 @@
+---
+title: Markdown
+---
+
+# Fetching data from local markdown file
+
+Spear can fetch data from local markdown files.  
+There are some rules for this feature.
+
+## Basic
+
+The way of fetching markdown file need [`@spearly/spear-markdown-plugin`](https://www.npmjs.com/@spearly/spear-markdown-plugin). 
+
+You can install via npm or yarn.
+
+```bash
+# yarn add @spearly/spear-markdown-plugin\n
+```
+
+After installing plugin, you should modify the `spear.config.mjs`:
+
+```javascript
+import { markdownPlugin } from "@spearly/spear-markdown-plugin";\n
+\n
+export default {\n
+  ...\n
+  "plugins": [\n
+    markdowmarkdownPluginnPlugin(),\n
+  ]\n
+}\n
+```
+
+### Prepare the markdown file
+
+By default, `@spearly/spear-markdown-plugin` search the markdown file under `data/` directory.  
+This plugin search the directories which has same name to content type under `data/` as first step, then next step is searcing contents from the directory under the `data/<content type name>/`.  
+Furthermore, this plugin use `.mdx` file extension for searching by default.
+
+For example, we want to the `content-sample` content type and `test` contnet alias document, we need create the `data/content-sample/test.mdx` file.
+
+```bash
+data\n
+  |- <content-sample>\n
+  |        |- test1.mdx (This document's content type is content-sample and content alias is test1.)\n
+  |        |- test2.mdx (This document's content type is content-sample and content alias is test2.)\n
+  |        |- test3.mdx (This document's content type is content-sample and content alias is test3.)\n
+```
+
+### Embed content
+
+The way to embed markdown content to the site is same the way to use Spearly CMS.  
+We will explain the field type after this section.
+
+1. content list
+
+`@spearly/spear-makedown-plugin` will repeat generating list in whole of the files under content type directory.
+
+```html
+<!-- This syntax will generate title list from /data/content-sample directories. -->\n
+<div cms-loop cms-content-type="content-sample">\n
+  <h1>{%= content-sample_title %</h1>\n
+</div>\n
+```
+
+2. content
+
+If specify `cms-item` and `cms-content-type` and `cms-content`, Spear will fetch specified markdown by using this plugin.
+
+```html
+<!-- This syntax will generate title of specific data from /data/content-sample/test1.mdx -->\n
+<div cms-item cms-content-type="content-sample" cms-content="test1">\n
+  <h1>{%= content-sample_title %</h1>\n
+</div>\n
+```
+
+## Markdown format (Field type)
+
+There are some rule of markdown format:  
+
+- Front-matter will convert to be text field.
+- Markdown body will convert to be rich text with `body` key.
+
+```markdown
+---\n
+title: Hello world!\n
+---\n
+# sample\n
+\n
+Markdown sample\n
+```
+
+### Front-matter
+
+Spear convert the key and value of front-matter to field's item name and item value.  
+All of front-matter will be text field type.
+
+### Markdown
+
+Markdown part will be rich text field type, then field name is `body`. This name is fixed.  
+Note that
+ - This plugin use the [remark](https://www.npmjs.com/package/remark) and [remark-html](https://www.npmjs.com/package/remark-html). This packages can't generate table, toc, If you use an another unified processor, you can use custom processor. For detail, see the next section.
+ - This plugin can't convert line-break string correctly.
+
+## Plugin options
+
+You can pass the plugin option via `markdownPlugin` paramter. This plugin allow the followoing options:
+
+| option key | option value type | defailt value | description |
+| ---------- | ----------------- | ------------- | ----------- |
+| directory  | string            | data          | Specify the directory which storing markdown files. |
+| markdownExtension | string     | .mdx          | Change the markdown file extension. |
+| processor  | UsePlugin         | remark().use(html) | Specify Unified processor. |
+| bodyPostProcessor | Function   | throw body html | If you want to convert the markdown html after building |
+
+### processor
+
+You can use other unified processor, For detail, see [unified document](https://unifiedjs.com/).
+
+For example, this Spear document project use the following processor in order to add highlight.
+
+```javascript
+import { unified } from "unified";\n
+import remarkParse from "remark-parse";\n
+import remarkGfm from "remark-gfm";\n
+import remarkRehype from "remark-rehype";\n
+import rehypeStringify from "rehype-stringify";\n
+import remarkToc from "remark-toc";\n
+const processor = unified()\n
+  .use(remarkParse)\n
+  .use(remarkGfm)\n
+  .use(remarkRehype)\n
+  .use(remarkToc)\n
+  .use(rehypeStringify)\n
+\n
+export default {\n
+  ...\n
+  "plugins": [\n
+    markdownPlugin({
+      processor: processor,\n
+    })
+  ]\n
+}\n
+```
+
+In above sample, use Gfm and Toc. As result of this line, this project generate tabel and ToC corectlly.

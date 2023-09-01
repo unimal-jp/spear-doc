@@ -6,4 +6,99 @@ title: プロジェクト構造
 
 Spear にはいくつかのプロジェクト構造のルールがあります。
 
-このドキュメントは公開予定です。
+## 基本
+
+デフォルトでは、Spear のウィザードは以下の構造を作成します。
+
+```bash
+├── package.json\n
+├── spear.config.mjs\n
+└── src\n
+    ├── articles\n
+    │   ├── [alias].html\n
+    │   └── index.html\n
+    ├── assets\n
+    │   ├── css\n
+    │   │   └── main.scss\n
+    │   ├── fonts\n
+    │   │   └── OpenSans-Regular.ttf\n
+    │   └── js\n
+    │       └── main.js\n
+    ├── components\n
+    │   └── main-component.spear\n
+    ├── images\n
+    │   └── logo.png\n
+    └── index.html\n
+```
+
+ルールで決められているファイルやディレクトリは以下のとおりです。
+
+| Name | Description |
+| ---- | ----------- |
+| package.json | npm パッケージ設定 |
+| spear.config.mjs | spear 設定。[インストールガイド](/{{lang}}/intro/install.html)はこのファイルについて記載されています。 |
+| src  | ソースディレクトリ。spear.config.mjs を変更することでこのソースディレクトリを変更することができます。 |
+| src/components | コンポーネントのディレクトリです。[コンポーネント](/{{lang}}/basic/component.html)にこのディレクトリについて記載されています。 |
+
+これ以外のファイルやディレクトリにはルールはありません。
+
+## リソースへの参照方法
+
+Spear は生成されたHTMLをほぼ `src` ディレクトリと同じように `dist` ディレクトリに出力します。そのため、参照文字列を意識する必要はありません。
+
+例えば、もし index.html が `./images/logo.png` を参照している場合、dist ディレクトリにも `images/logo.png` があるため生成された index.html は同じパスで生成することができます。
+
+- ソースディレクトリ
+```bash
+└── src\n
+    ├── articles\n
+    │   ├── [alias].html\n
+    │   └── index.html\n
+    ├── assets\n
+    │   ├── css\n
+    │   │   └── main.scss\n
+    │   ├── fonts\n
+    │   │   └── OpenSans-Regular.ttf\n
+    │   └── js\n
+    │       └── main.js\n
+    ├── components\n
+    │   └── main-component.spear\n
+    ├── images\n
+    │   └── logo.png\n
+    └── index.html\n
+```
+
+- 生成されたディレクトリ
+```bash
+└── dist\n
+    ├── articles\n
+    │   ├── blog-post1.html\n
+    │   ├── blog-post2.html\n
+    │   └── index.html\n
+    ├── assets\n
+    │   ├── css\n
+    │   │   └── main.css\n
+    │   ├── fonts\n
+    │   │   └── OpenSans-Regular.ttf\n
+    │   └── js\n
+    │       └── main.js\n
+    ├── images\n
+    │   └── logo.png\n
+    └── index.html\n
+```
+
+### scss ファイルへの参照
+
+通常、`<link>` タグで SCSS ファイルのビルド後のファイルを指定するべきです。つまり `assets/css/main.css` へ参照する。
+
+しかし Spear はビルド中に `.scss` を `.css` に変換します。そのため、以下のようにスタイルを指定することができます。
+
+```html
+<link rel="stylesheet" href="/assets/css/main.scss">
+```
+
+After building, an above sample will be the bellow:
+
+```html
+<link rel="stylesheet" href="/assets/css/main.css">
+```

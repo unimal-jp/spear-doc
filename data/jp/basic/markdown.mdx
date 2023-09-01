@@ -1,0 +1,145 @@
+---
+title: Markdown
+---
+
+# ローカルの Markdown ファイルからデータをフェッチする
+
+Spear はローカルの Markdown ファイルからデータをフェッチできます。  
+この機能にはいくつかルールがあります。
+There are some rules for this feature.
+
+## 基本
+
+Markdown ファイルのフェッチ方法には [`@spearly/spear-markdown-plugin`](https://www.npmjs.com/@spearly/spear-markdown-plugin) が必要です。
+
+npm か yarn 経由でインストールできます。
+
+```bash
+# yarn add @spearly/spear-markdown-plugin\n
+```
+
+インストール後、`spear.config.mjs` を修正する必要があります。
+
+```javascript
+import { markdownPlugin } from "@spearly/spear-markdown-plugin";\n
+\n
+export default {\n
+  ...\n
+  "plugins": [\n
+    markdowmarkdownPluginnPlugin(),\n
+  ]\n
+}\n
+```
+
+### Markdown ファイルの準備
+
+デフォルトでは、`@spearly/spear-markdown-plugin`が `data/` ディレクトリ配下の Markdown ファイルを検索します。  
+このプラグインは、第一段階で `data/` 配下でコンテンツタイプ名と同じディレクトリを検索します。その次のステップとして、`data/<content type name>/`配下からコンテンツを検索します。  
+更に、このプラグインはデフォルトで `.mdx` 拡張子のファイルを検索します。
+
+例えば、`content-sample` というコンテンツタイプの `test` というコンテンツが欲しい場合、`data/content-sample/test.mdx` というファイルを作っておく必要があります。
+
+```bash
+data\n
+  |- <content-sample>\n
+  |        |- test1.mdx (This document's content type is content-sample and content alias is test1.)\n
+  |        |- test2.mdx (This document's content type is content-sample and content alias is test2.)\n
+  |        |- test3.mdx (This document's content type is content-sample and content alias is test3.)\n
+```
+
+### コンテンツ埋め込み
+
+Markdown コンテンツをサイトに埋め込む方法は Spearly CMS を利用する方法と同じです。
+
+1. コンテンツリスト
+
+`@spearly/spear-makedown-plugin` はコンテンツタイプディレクトリ配下のファイル全部のリストを繰り返し生成します。
+
+```html
+<!-- This syntax will generate title list from /data/content-sample directories. -->\n
+<div cms-loop cms-content-type="content-sample">\n
+  <h1>{%= content-sample_title %</h1>\n
+</div>\n
+```
+
+2. コンテンツ
+
+もし、`cms-item` と `cms-content-type` そして `cms-content` 属性が指定されていれば、Spear はプラグインを使って特定の Markdown ファイルからフェッチします。
+
+```html
+<!-- This syntax will generate title of specific data from /data/content-sample/test1.mdx -->\n
+<div cms-item cms-content-type="content-sample" cms-content="test1">\n
+  <h1>{%= content-sample_title %</h1>\n
+</div>\n
+```
+
+## Markdown フォーマット (フィールドタイプ)
+
+Markdown のフォーマットにはいくつかルールがあります。
+
+- フロントマターはテキストフィールドに変換されます。
+- Markdown の本文は `body` というキー値のリッチテキストに変換されます。
+
+```markdown
+---\n
+title: Hello world!\n
+---\n
+# sample\n
+\n
+Markdown sample\n
+```
+
+### フロントマター
+
+Spear はフロントマターのキーと値をフィールドのアイテム名と値に変換します。
+すべてのフロントマターはテキストフィールドになります。
+
+### Markdown
+
+Markdown 部分はリッチテキストフィールドとなり、フィールド名は `body` になります。この名前は固定です。
+注意：
+ - このプラグインは [remark](https://www.npmjs.com/package/remark) と [remark-html](https://www.npmjs.com/package/remark-html) を利用しています。このパッケージはテーブルや ToC を生成できません。もし他の unified プロセッサーを使いたい場合、カスタムのプロセッサーを利用できます。カスタムのプロセッサーについては次のセクションを参照してください。
+ - このプラグインは改行を正しく変換できない場合があります。
+
+## プラグインオプション
+
+`markdownPlugin` 経由でプラグインのオプションを渡すことができます。このプラグインで許可されているオプションは以下のとおりです。
+
+| オプションキー | 値の型 | デフォルト値 | 説明 |
+| ---------- | ----------------- | ------------- | ----------- |
+| directory  | string            | data          | Markdown ファイルを保存しているディレクトリを指定します。 |
+| markdownExtension | string     | .mdx          | Markdown の拡張子を変更します。 |
+| processor  | UsePlugin         | remark().use(html) | Unified のプロセッサーを指定します。 |
+| bodyPostProcessor | Function   | throw body html | もし変換後のマークダウンのHTMLに変換が必要な場合指定します。 |
+
+### プロセッサー
+
+unified の他のプロセッサーを利用することがd系マス。詳細は [unified のドキュメント](https://unifiedjs.com/) を参照してください。
+
+例えば、この Spear ドキュメントプロジェクトは文法ハイライトを有効にするため、以下のプロセッサーを利用しています。
+
+```javascript
+import { unified } from "unified";\n
+import remarkParse from "remark-parse";\n
+import remarkGfm from "remark-gfm";\n
+import remarkRehype from "remark-rehype";\n
+import rehypeStringify from "rehype-stringify";\n
+import remarkToc from "remark-toc";\n
+const processor = unified()\n
+  .use(remarkParse)\n
+  .use(remarkGfm)\n
+  .use(remarkRehype)\n
+  .use(remarkToc)\n
+  .use(rehypeStringify)\n
+\n
+export default {\n
+  ...\n
+  "plugins": [\n
+    markdownPlugin({
+      processor: processor,\n
+    })
+  ]\n
+}\n
+```
+
+上記サンプルでは、 Gfm と Toc も利用しています。結果として、このプロジェクトでは Toc やテーブルを上手く生成できます。

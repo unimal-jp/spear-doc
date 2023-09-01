@@ -6,4 +6,99 @@ title: Project Structure
 
 Spear has some project structure rules.
 
-This document is comming soon.
+## Basic
+
+By default, spear wizard will create the following structures:
+
+```bash
+├── package.json\n
+├── spear.config.mjs\n
+└── src\n
+    ├── articles\n
+    │   ├── [alias].html\n
+    │   └── index.html\n
+    ├── assets\n
+    │   ├── css\n
+    │   │   └── main.scss\n
+    │   ├── fonts\n
+    │   │   └── OpenSans-Regular.ttf\n
+    │   └── js\n
+    │       └── main.js\n
+    ├── components\n
+    │   └── main-component.spear\n
+    ├── images\n
+    │   └── logo.png\n
+    └── index.html\n
+```
+
+The files and directories which has rule is the following:
+
+| Name | Description |
+| ---- | ----------- |
+| package.json | npm package settings |
+| spear.config.mjs | spear settings. [Install guid](/{{lang}}/intro/install.html) explain this file. |
+| src  | The source directory. You can change this source directory by changing the spear.config.mjs |
+| src/components | The components directory. [Component](/{{lang}}/basic/component.html) describe about this directory for detail. |
+
+There are not regulation for other files and directories.
+
+## Refer to resources
+
+Spear will create generated HTML to `dist` directory as is src directory. So we don't care the refer string.  
+
+For example, If index.html refer the `./images/logo.png`, generated index.html can refer same path since dist directory has `images/logo.png`
+
+- source directory
+```bash
+└── src\n
+    ├── articles\n
+    │   ├── [alias].html\n
+    │   └── index.html\n
+    ├── assets\n
+    │   ├── css\n
+    │   │   └── main.scss\n
+    │   ├── fonts\n
+    │   │   └── OpenSans-Regular.ttf\n
+    │   └── js\n
+    │       └── main.js\n
+    ├── components\n
+    │   └── main-component.spear\n
+    ├── images\n
+    │   └── logo.png\n
+    └── index.html\n
+```
+
+- generated directory
+```bash
+└── dist\n
+    ├── articles\n
+    │   ├── blog-post1.html\n
+    │   ├── blog-post2.html\n
+    │   └── index.html\n
+    ├── assets\n
+    │   ├── css\n
+    │   │   └── main.css\n
+    │   ├── fonts\n
+    │   │   └── OpenSans-Regular.ttf\n
+    │   └── js\n
+    │       └── main.js\n
+    ├── images\n
+    │   └── logo.png\n
+    └── index.html\n
+```
+
+### refer to scss file
+
+Usually, we should specify the after building scss file to `<link>` tag. I.e., Refer to `assets/css/main.css`.
+
+However, Spear convert `.scss` to `.css` in build process. So we can specify the style like bellow:
+
+```html
+<link rel="stylesheet" href="/assets/css/main.scss">
+```
+
+After building, an above sample will be the bellow:
+
+```html
+<link rel="stylesheet" href="/assets/css/main.css">
+```
