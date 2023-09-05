@@ -1,0 +1,117 @@
+---
+title: Main Concept
+---
+
+# Concept
+
+---
+**NOTE**
+
+This concept is under consideration in [discussion](https://github.com/unimal-jp/spear/discussions/128).
+
+Feel free to leave a comment on this discussion, if you have an opinion🚀
+
+---
+
+# Spear Concept
+
+There are many SSG tools in the world like [Next.js](https://nextjs.org/), [Astro](https://astro.build/), [Gatsby](https://www.gatsbyjs.com/).
+
+Spear is also an SSG tool which has the following features:
+
+- Connectivity to Headless CMS.
+- Lightweight framework.
+- No learning, you need to only know the HTML/CSS.
+- Provide SEO by default.
+
+## Recap website history.
+
+Web technology history depends on Web Browser, JavaScript specs, HTML and CSS specs.  
+It's the history of fighting the developer to the Web Compatibility.
+
+![Web Compatibility](/images/concept/compatibility-issue.jpeg)
+
+### Compatibility dilemma
+
+Before standardizing the web, the building was primitive work. Implementing HTML with a text editor, add style by using simple CSS.  
+If there are compatibility issues with each browser, we didn't write standard specs. In reality, it was different. There is the browser that didn't support JavaScript, didn't support specific styles, or HTML elements. So W3C was established, and then they wrote the standard spec for the web.
+
+W3C improved web technologies, they published many specifications. However, there are existing compatibility issues. Especially, InternetExplorer was especially bothersome.  
+Then some libraries resolved this compatibility issue, and the well-known library is Bootstrap.
+
+The browser compatibility issue became a big problem on the web. Web Specification speed was too fast. Some browser vendor couldn't add a new engineering resource to the browser project of their company strategies. 
+This issue ended up still exists now. However, browser vendors learn the web browser is a platform. They are sensitive the web browser compatibility. For example, when they write a proposal they write the all of browser vendor reactions. Then they use it criterion to judge.
+
+From the point of view of JavaScript, JavaScript has the same issue as well.  
+But JavaScipt could use the polifyll and changing implement dynamically by User-Agent.
+
+### Thinking about modern web compatibility
+
+As written above, the Browser vendor considers the web compatibility. So we don't need to watch the compatibility deeply compared with before. However, we need to take care of it a little.
+
+What we are thinking is we can build the website with standard HTML and CSS without any compatibility libraries, polyfill, or rolling-up libraries.
+A web browser is a platform. Historically platform provide necessary features, then other convenient tool is changing rapidly by third parties.  
+The most important thinking is that the feature provided by the web browser is enough to build a website. In other words, web developers can implement the website with only HTML/CSS/JavaScript.
+
+
+## Empathizing with creator.
+
+Now, around half of the websites are made by WordPress[1] worldwide. However, down-to-earth creators know WordPress has some issues.
+
+- Updates (Vulnerability)  
+WordPress has many plugins, this plugin might have security risks. So the maintainer should check these plugin updates every day. Otherwise, you can pay for third-party service of WordPress.
+- Scalability  
+Many services scaling the WordPress site. This shows that WordPress is not easy to scale up. WordPress needs a server that runs PHP and Database, then it is difficult to increase the server machine. (I remember the LAMPP era)
+
+### Why web creator doesn't use SSG?
+
+We surveyed the reasons of web creators didn't use the SSG tools (In Japan).
+Many creators have contracts with the client company, then they don't have enough budget to maintain the website. (I.e., the client company doesn't care about the maintenance fee.)
+
+As a result, the creator doesn't want to use the tool that needs to have maintenance, like updating the dependency package or fixing the code by breaking updates of the library.
+
+## Spear principal pillar
+
+1. 🧙Creating a website with only HTML / CSS.
+2. 🚀Lightweight Framework
+3. 🧐Backward compatibility.
+
+### Creating a website with only HTML / CSS.
+
+Recently, frontend technologies have become complex.  
+We need to learn elemental technologies like JavaScript, Web API, and others. Furthermore, we need to learn the framework rules.  
+
+For example, We should know the reactivity and event emitting for using a reactivity framework like Vue / React.
+
+As mentioned in the [Recap website] section, we believe that we can build a website only with HTML / CSS (and JavaScript sometimes).
+
+Spear can also build HTML and CSS knowledge 🧙.
+
+In this documentation project, JavaScript code is 8%. Almost all code is configuration, other is copied from hightlight.js!
+
+### Lightweight Framework
+
+The modern framework is too complex for building and contains many library snippets.  
+After building object is fat.
+
+One of the goals of Spear is lightweight, decreasing the build object.
+
+### Backward compatibility
+
+Sure!  
+We always consider backward compatibility. We shouldn't release such as breaking change.  
+
+In backward compatibility, the deprecating process is important as you know.  
+Sometimes, developers face a build failure that `has no function` after updating the library. The library might drop the features that they don't need.  
+
+Spear shall never release such breaking change!
+
+---
+Planning:  
+
+We are planning CI Test for compatibility:  
+
+https://github.com/unimal-jp/spear/issues/196
+
+---
+

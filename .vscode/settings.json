@@ -1,5 +1,12 @@
 {
   "files.associations": {
     "*.spear": "html"
-  }
+  },
+  "grammarly.selectors": [
+    {
+      "language": "plaintext",
+      "scheme": "file",
+      "pattern": "data/en/concept/concept.mdx"
+    }
+  ]
 }
