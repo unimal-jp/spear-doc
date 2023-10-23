@@ -7,6 +7,7 @@
   "scripts": {
     "dev-en": "spear watch --file spear.config-en",
     "dev-jp": "spear watch --file spear.config-jp",
+    "serve": "npm run build && npx http-server dist",
     "clean": "rm -rf dist dist-*",
     "build": "yarn clean && yarn build-redirect && yarn build-en && yarn build-jp && yarn after-build",
     "build-redirect": "spear build --file spear.config-redirect",
@@ -30,5 +31,8 @@
     "remark-html": "^15.0.2",
     "remark-rehype": "^10.1.0",
     "remark-toc": "^8.0.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }

@@ -2,19 +2,19 @@
 
 # Spear documentation Proposal
 
-This repository is the proposal of Spear documentation.
+This repository is the Spear documentation.
 
 ## How to build?
 
-It's easy to build. Just you type the `yarn` and `yarn build`
+It's easy to build. Just you type the `yarn install` and `yarn serve`
 
 ## How to edit?
 
-This documentation site will fetch from local mdx file.  
-The mdx is unified ecosystem[1], this file has `front-matter` fields and main content.  
+The content of this document site will fetch from local mdx file.  
+The mdx is [unified ecosystem](https://unifiedjs.com/), this file has `front-matter` fields and main content.    
 A documentation use the `front-matter` as field.
 
-The sample data of mdx is the following:
+The sample content of mdx is the following:
 
 ```
 ---
@@ -34,12 +34,12 @@ This document project treat `title` field as field type. In this case, this doc 
 
 Note that:
 - At the moment, this project use `text` and `rich text` field only.
-- This project use the directory name as `content type` and `content id`.
+- This project use the directory name as `content type` and file name as `content id`.
   - If directory is `/data/blog/test.mdx`, `content_type` is `blog` and `content id` is `test`.
 
 ## How it work?
 
-The spear will introduce the injecting api client. [#189](https://github.com/unimal-jp/spear/pull/189)
+The api client of the spear can be changeable. [#189](https://github.com/unimal-jp/spear/pull/189)
 
 This change bring the content collection feature to us.
 
@@ -47,3 +47,15 @@ You can see the mechanism of getting mdx file. [code](https://github.com/mantaro
 This code will use `front-matter` and `remark` libraries.
 
 For detail, see the official documentation of these library. 
+
+## Contribute for translation
+
+If you are interedted in translation, we are welcome to your contribution!
+
+There are two type of translation.
+
+1. Translate for the new languages : This document has two language, it mean Japanese and English. If you can translate into other language, we want you to translate it.
+
+2. Translate the untranslated document: There a lot of untranslated document. Please try it!
+
+You can find translate issue by filtering translate tag.

@@ -2,16 +2,16 @@
 
 # Spear ドキュメントサイトプロポーサル
 
-このレポジトリは、Spear のドキュメントサイトの提案用です。
+このレポジトリは、Spear のドキュメントサイトです。
 
 ## ビルド方法
 
-簡単に `yarn` と `yarn build` コマンドを実行することで確認できます。
+簡単に `yarn install` と `yarn serve` コマンドを実行することで確認できます。
 
 ## 編集方法
 
 このドキュメントサイトはローカルの mdx ファイルをフェッチします。
-MDX は unified ecosystem[1] で、`フロントマター` フィールドとメインコンテンツ部分を持ちます。
+MDX は [unified ecosystem](https://unifiedjs.com/) で、`フロントマター` フィールドとメインコンテンツ部分を持ちます。  
 `フロントマター` をフィールドとして利用します。
 
 以下に mdx のサンプルコードを示します。
@@ -33,17 +33,29 @@ Sub menu document.
 このドキュメントサイトでは `title` をフィールドタイプとして扱います。この場合、 `title` フィールドはテキストとして、 `body` フィールドはリッチテキストとして扱います。
 
 注意:
-- At the moment, this project use `text` and `rich text` field only.
-- This project use the directory name as `content type` and `content id`.
-  - If directory is `/data/blog/test.mdx`, `content_type` is `blog` and `content id` is `test`.
+- 現時点で、このプロジェクトでは `テキスト` と `リッチテキスト` フィールドタイプだけ利用できます。
+- このプロジェクトでは `content type` としてディレクトリ名を、`content id` としてファイル名を利用します。
+  - もしパスが `/data/blog/test.mdx` だった場合、`content_type` は `blog` で `content id` は `test` となります。
 
-## How it work?
+## 動作原理
 
-The spear will introduce the injecting api client. [#189](https://github.com/unimal-jp/spear/pull/189)
+Spear は API クライアントを注入できる機能を有しています。 [#189](https://github.com/unimal-jp/spear/pull/189)
 
-This change bring the content collection feature to us.
+この機能のおかげでコンテントコレクション機能が使えるようになります。
 
-You can see the mechanism of getting mdx file. [code](https://github.com/mantaroh/spear-doc/blob/967800439f9ed83120e7028a2375c6330b108683/spear.config.mjs#L74-L90)  
-This code will use `front-matter` and `remark` libraries.
+MDX ファイルが使用できる機構について知りたい場合は、[このコード](https://github.com/mantaroh/spear-doc/blob/967800439f9ed83120e7028a2375c6330b108683/spear.config.mjs#L74-L90)を参考にしてください。
+このコードでは `front-matter` と `remark` ライブラリを利用しています。
 
-For detail, see the official documentation of these library. 
+詳細については、このライブラリの公式ドキュメントを参照してください。
+
+## 翻訳の貢献
+
+もし翻訳に興味があれば、いつでも貢献をお待ちしています！
+
+翻訳には2種類あります。
+
+1. 新しい言語へ翻訳する：現在、英語と日本語の2言語があります。もし他の言語に翻訳できるのであれば、ぜひ翻訳に挑戦してください！
+
+2. 未翻訳ドキュメントの翻訳：未翻訳のドキュメントは数多くあります。ぜひ挑戦してみてください。
+
+Issue で translate タグでフィルタリングすることで翻訳の Issue を探すことができます。
