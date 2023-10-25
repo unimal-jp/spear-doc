@@ -11,9 +11,9 @@ import { parse } from "node-html-parser";
 const processor = unified()
   .use(remarkParse)
   .use(remarkGfm)
-  .use(remarkRehype)
+  .use(remarkRehype, { allowDangerousHtml: true })
   .use(remarkToc)
-  .use(rehypeStringify)
+  .use(rehypeStringify, { allowDangerousHtml: true })
 
 export default {
   "projectName": "Spear document",
