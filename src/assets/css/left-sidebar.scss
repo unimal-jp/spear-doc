@@ -43,5 +43,11 @@ aside.left-sidebar {
 
     @media screen and (max-width: 980px) {
         display: none;
+        margin-left: 0;
+        margin-top: 56px;
+        background-color: #F1ECF6;
+        &.active {
+            display: block;
+        }
     }
 }
