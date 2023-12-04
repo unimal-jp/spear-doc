@@ -16,7 +16,7 @@
     "lint": "npx eslint ."
   },
   "dependencies": {
-    "@spearly/spear-cli": "^1.4.4",
+    "@spearly/spear-cli": "^1.4.11",
     "@spearly/spear-markdown-plugin": "^1.0.2",
     "eslint": "^8.48.0",
     "html-minifier-terser": "^7.2.0",
