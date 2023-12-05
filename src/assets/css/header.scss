@@ -20,6 +20,9 @@ header.header {
 
         div.switch-language {
             margin-right: 10px;
+            div.switch-language > select {
+                background-color: #ffffff;
+                border: 1px solid #19191a;
         }
 
         a.github-link {
