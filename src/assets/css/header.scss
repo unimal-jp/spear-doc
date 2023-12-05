@@ -21,7 +21,7 @@ header.header {
         div.switch-language {
             margin-right: 10px;
             div.switch-language > select {
-                background-color: #ffffff;
+                background-color: #e6e6fa;
                 border: 1px solid #19191a;
         }
 
@@ -39,4 +39,5 @@ header.header {
         flex-grow: 1;
         justify-content: flex-start;
     }
+}
 }
