@@ -25,6 +25,9 @@ header.header {
 
         div.switch-language {
             margin-right: 10px;
+            div.switch-language > select {
+                background-color: #b3b3dd;
+                border: 1px solid #19191a;
         }
 
         a.github-link {
@@ -41,7 +44,6 @@ header.header {
         flex-grow: 1;
         justify-content: flex-start;
     }
-
     @media screen and (max-width: 980px) {
 
         > nav {
