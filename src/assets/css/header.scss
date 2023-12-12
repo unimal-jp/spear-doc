@@ -25,12 +25,11 @@ header.header {
 
         div.switch-language {
             margin-right: 10px;
-            div.switch-language > select {
-                background-color: #b3b3dd;
+            > select {
+                background-color: #fafad2;
                 border: 1px solid #19191a;
             }
         }
-
         a.github-link {
             width: 30px;
             margin-right: 10px;
@@ -73,3 +72,4 @@ header.header {
         }
     }
 }
+
