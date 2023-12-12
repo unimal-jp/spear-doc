@@ -9,9 +9,14 @@ header.header {
         align-items: center;
         justify-content: center;
         
+        > div.menu-button {
+            display: none;
+        }
+
         ul.logo-container {
             list-style-type: none;
             display: flex;
+            padding: 0;
 
             img {
                 height: 40px;
@@ -20,6 +25,9 @@ header.header {
 
         div.switch-language {
             margin-right: 10px;
+            div.switch-language > select {
+                background-color: #b3b3dd;
+                border: 1px solid #19191a;
         }
 
         a.github-link {
@@ -35,5 +43,32 @@ header.header {
     .logo {
         flex-grow: 1;
         justify-content: flex-start;
+    }
+    @media screen and (max-width: 980px) {
+
+        > nav {
+            > div.menu-button{
+                display: block;
+                margin: auto 10px;
+                cursor: pointer;
+                width: 15px;
+
+                > svg:nth-child(1) {
+                    display: unset;
+                }
+                > svg:nth-child(2) {
+                    display: none;
+                }
+
+                &.active {
+                    > svg:nth-child(1) {
+                        display: none;
+                    }
+                    > svg:nth-child(2) {
+                        display: unset;
+                    }
+                }
+            }
+        }
     }
 }
